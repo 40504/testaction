@@ -17,4 +17,5 @@ jobs:
           issue-number: ${{ github.event.issue.number }}
           issue-name: ${{ github.event.issue.name }}
           body: |
-            ${{ github.event.issue.name }}
+            ${{ github.event.issue.owner }}
+            ${{ github.event.issue.repo }}
