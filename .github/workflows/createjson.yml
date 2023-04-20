@@ -5,13 +5,10 @@ on:
     types:
       - opened
       - labeled
-
 jobs:
   build:
     runs-on: ubuntu-latest
-    name: Convert New built-with-eleventy Issue to Sites Data
     steps:
-      - name: Checkout
         uses: actions/checkout@v3
-      - name: Swift Generate
+      - name: Json Generate
         run: pwd
