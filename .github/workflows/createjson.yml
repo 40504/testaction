@@ -3,7 +3,6 @@ name: create a json file when a new issue is opened
 on:
   issues:
     types:
-      - opened
       - labeled
 jobs:
   build:
