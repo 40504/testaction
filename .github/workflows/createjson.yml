@@ -22,4 +22,4 @@ jobs:
         with:
           issue-number: ${{ github.event.issue.number }}
           body: |
-            ${{ toJson(github.event.issue) }}
+            ${{ toJson(github.event.issue.body) }}
