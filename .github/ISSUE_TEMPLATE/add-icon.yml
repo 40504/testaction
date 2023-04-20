@@ -1,7 +1,7 @@
 name: Add Icon
 description: Suggest a service that support two-factor authentication (TOTP)
 title: Add [service name]
-labels: built-with-eleventy, approved
+labels: json
 body:
   - type: input
     id: name
@@ -34,3 +34,5 @@ body:
         - label: TOTP (Google Authenticator)
           required: true
         - label: U2F
+        - label: sms
+        - label: email
