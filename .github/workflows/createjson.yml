@@ -24,4 +24,4 @@ jobs:
         with:
           issue-number: ${{ github.event.issue.number }}
           body: |
-            $GITHUB_CONTEXT
+            ${{ toJson(github) }}
