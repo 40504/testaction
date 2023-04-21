@@ -30,4 +30,4 @@ jobs:
             
       - name: javascript
         run: |
-          node json.js
+          node /scripts/json.js
