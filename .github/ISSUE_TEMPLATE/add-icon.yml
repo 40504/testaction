@@ -4,7 +4,7 @@ title: Add [service name]
 labels: json
 body:
   - type: input
-    id: name
+    id: service_name
     attributes:
       label: name
       description: Exact service name
@@ -12,7 +12,7 @@ body:
     validations:
       required: true
   - type: input
-    id: domain
+    id: domain_name
     attributes:
       label: domain
       description: 
@@ -20,13 +20,13 @@ body:
     validations:
       required: true
   - type: input
-    id: documentaion
+    id: documentaion_url
     attributes:
       label: documentation
       description: Link to documentation on how to enable 2FA on the site.
       placeholder: ex. https://help.dropbox.com/account-access/enable-two-step-verification
   - type: checkboxes
-    id: 2fa method
+    id: 2fa_method
     attributes:
       label: 2fa
       description: The service icon you request must support two-factor authentication, TOTP algoritm
