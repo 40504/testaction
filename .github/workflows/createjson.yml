@@ -23,3 +23,7 @@ jobs:
           issue-number: ${{ github.event.issue.number }}
           body: |
             ${{ toJson(github.event.issue.body) }}
+            
+      - name: Create file
+        run: |
+          printf "Hello\nWorld\n" > hw.txt
