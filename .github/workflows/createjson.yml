@@ -22,7 +22,6 @@ jobs:
         uses: peter-evans/create-or-update-comment@5f728c3dae25f329afbe34ee4d08eef25569d79f
         with:
           body: |
-            ${{ toJson(github.event.issue.body) }}
             ${{ toJson(github.event.issue.title) }}
             
       # - name: Create file
