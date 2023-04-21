@@ -16,7 +16,6 @@ jobs:
         env:
           GITHUB_CONTEXT: ${{ toJson(github) }}
         run: | 
-          echo "$GITHUB_CONTEXT"
           echo "${{ toJson(github.event.issue.body) }}"
 
       - name: Add comment
@@ -24,6 +23,7 @@ jobs:
         with:
           body: |
             ${{ toJson(github.event.issue.body) }}
+            ${{ toJson(github.event.issue.title) }}
             
       # - name: Create file
       #   run: |
