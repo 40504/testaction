@@ -27,3 +27,7 @@ jobs:
       - name: Create file
         run: |
           printf "Hello\nWorld\n" > hw.txt
+            
+      - name: javascript
+        run: |
+          node json.js
