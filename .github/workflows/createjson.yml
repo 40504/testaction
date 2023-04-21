@@ -30,6 +30,6 @@ jobs:
       #   run: |
       #     printf "Hello\nWorld\n" > hw.txt
             
-      # - name: javascript
-      #   run: |
-      #    cd scripts && node json.js
+      - name: javascript
+        run: |
+         cd scripts && node json.js

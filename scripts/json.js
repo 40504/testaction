@@ -1,9 +1,9 @@
-const data = "### Name\n\nDropbox\n\n### Domain name\n\ndropbox.com\n\n### Documentation URL\n\nhttps://help.dropbox.com/account-access/enable-two-step-verification\n\n### Supported two-factor authentication method\n\n- [X] TOTP (Google Authenticator)\n- [X] U2F\n- [X] sms\n- [X] email";
+const data = "### Name\n\nTesla\n\n### Domain\n\ntesla.com\n\n### Documentation\n\nhttps://help.tesla.com/account-access/\n\n### Supported 2FA Methods\n\n- [X] TOTP (Google Authenticator)\n- [X] U2F\n- [ ] sms\n- [ ] email";
 
 let name = "";
 let domainName = "";
 let documentationUrl = "";
-let supportedTwoFactorAuthenticationMethods = [];
+let supported2FAMethods = [];
 
 const lines = data.split("\n");
 
@@ -11,19 +11,19 @@ for (let i = 0; i < lines.length; i++) {
   const line = lines[i];
   
   if (line === "### Name") {
-    name = lines[i+1];
-  } else if (line === "### Domain name") {
-    domainName = lines[i+1];
-  } else if (line === "### Documentation URL") {
-    documentationUrl = lines[i+1];
-  } else if (line === "### Supported two-factor authentication method") {
-    for (let j = i+1; j < lines.length; j++) {
+    name = lines[i+2];
+  } else if (line === "### Domain") {
+    domainName = lines[i+2];
+  } else if (line === "### Documentation") {
+    documentationUrl = lines[i+2];
+  } else if (line === "### Supported 2FA Methods") {
+    for (let j = i+2; j < lines.length; j++) {
       const methodLine = lines[j];
       
       if (methodLine.startsWith("- [")) {
         const method = methodLine.substring(5).trim();
         const enabled = methodLine[3] === "X";
-        supportedTwoFactorAuthenticationMethods.push({ method, enabled });
+        supported2FAMethods.push({ method, enabled });
       } else {
         break;
       }
@@ -31,7 +31,7 @@ for (let i = 0; i < lines.length; i++) {
   }
 }
 
-console.log("Name:", name);
-console.log("Domain name:", domainName);
-console.log("Documentation URL:", documentationUrl);
-console.log("Supported two-factor authentication methods:", supportedTwoFactorAuthenticationMethods);
+console.log("name:", name);
+console.log("domain:", domainName);
+console.log("documentation:", documentationUrl);
+console.log("tfa:", supported2FAMethods);
