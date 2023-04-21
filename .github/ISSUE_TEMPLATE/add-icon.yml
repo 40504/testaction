@@ -6,7 +6,7 @@ body:
   - type: input
     id: name
     attributes:
-      label: Name
+      label: name
       description: Exact service name
       placeholder: ex. Dropbox
     validations:
@@ -14,7 +14,7 @@ body:
   - type: input
     id: domain
     attributes:
-      label: Domain name
+      label: domain
       description: 
       placeholder: ex. dropbox.com
     validations:
@@ -22,13 +22,13 @@ body:
   - type: input
     id: documentaion
     attributes:
-      label: Documentation URL
+      label: documentation
       description: Link to documentation on how to enable 2FA on the site.
       placeholder: ex. https://help.dropbox.com/account-access/enable-two-step-verification
   - type: checkboxes
-    id: 2fa
+    id: 2fa method
     attributes:
-      label: Supported two-factor authentication method
+      label: 2fa
       description: The service icon you request must support two-factor authentication, TOTP algoritm
       options:
         - label: TOTP (Google Authenticator)
