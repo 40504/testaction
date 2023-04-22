@@ -2,13 +2,14 @@
 const fs = require('fs');
 
 const data = process.env.BODY;
-console.log("data======>", data.split("\n"))
+console.log(`BODY: ${data}`);
 
 const lines = data.split("\n");
-console.log("lines======>", lines)
+console.log(`lines: ${lines}`);
 
 const name = lines[2];
-console.log("name======>", name)
+console.log(`name: ${name}`);
+
 const domainName = lines[6];
 const documentationUrl = lines[10] !== "_No response_" ? lines[10] : null;
 const supported2FAMethods = lines
