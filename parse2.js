@@ -1,8 +1,8 @@
-const data = process.env.BODY;
+const data = "### Name\n\nDropbox\n\n### Domain\n\ndropbox.com\n\n### Documentation\n\n_No response_\n\n### Supported 2FA Methods\n\n- [X] TOTP (Google Authenticator)\n- [ ] U2F\n- [ ] sms\n- [ ] email"
 console.log("Body:", data);
 
 // Split the text into an array of lines
-const lines = data.split('\n');
+const lines = data.split('\r\n');
 console.log("lines======>", lines)
 // Initialize an empty object to store the parsed data
 const parsedData = {};
