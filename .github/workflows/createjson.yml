@@ -23,4 +23,7 @@ jobs:
           issue-number: ${{ github.event.issue.number }}
           body: |
             ${{ toJson(github.event.issue.body) }}
-        run: cd scripts && node json.js
+      
+      - name: Add comment
+        run: |
+          cd scripts && node json.js
