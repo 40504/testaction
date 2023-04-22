@@ -4,8 +4,14 @@ const fs = require('fs');
 const data = process.env.BODY;
 console.log("Body:", data);
 
+const data1 = "### Name\n\nDropbox\n\n### Domain\n\ntesla.com\n\n### Documentation\n\nhttps://help.dropbox.com/account-access/enable-two-step-verification\n\n### Supported 2FA Methods\n\n- [X] TOTP (Google Authenticator)\n- [ ] U2F\n- [ ] sms\n- [ ] email";
+console.log("Body1:", data1);
+
 const lines = data.split("\r\n");
 console.log("lines:", lines);
+
+const lines1 = data1.split("\r\n");
+console.log("lines1:", lines1);
 
 const name = lines[3];
 console.log("name:", name);
