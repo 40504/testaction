@@ -10,12 +10,16 @@ const octokit = new Octokit({
 });
 
 // Get additional data about the issue from the GitHub API
-const { data } = await octokit.issues.get({
+octokit.issues.get({
   owner: process.env.GITHUB_REPOSITORY.split('/')[0],
   repo: process.env.GITHUB_REPOSITORY.split('/')[1],
   issue_number: issue.number,
-});
+}).then(response => {
+  const data = response.data;
 
-// Save the data to a JSON file in the Git directory
-const filename = `issue-${issue.number}.json`;
-fs.writeFileSync(filename, JSON.stringify(data, null, 2));
+  // Save the data to a JSON file in the Git directory
+  const filename = `issue-${issue.number}.json`;
+  fs.writeFileSync(filename, JSON.stringify(data, null, 2));
+}).catch(error => {
+  console.error(error);
+});
