@@ -23,8 +23,8 @@ jobs:
       
       - name: Add comment
         uses: actions/setup-node@v3
-          with:
-            node-version: '16.x'
+        with:
+          node-version: '16.x'
         run: npm install
         run: node script.js
         env:
