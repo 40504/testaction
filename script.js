@@ -1,7 +1,7 @@
 // const { log } = require('console');
 const fs = require('fs');
 
-const data = process.env;
+const data = process.env.BODY.substring(1, process.env.BODY.length - 1);
 console.log("Body1:", data);
 
 const lines = data.split("\n\n");
