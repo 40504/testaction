@@ -8,12 +8,12 @@ const lines = data.split("\r\n");
 console.log("lines:", lines);
 
 
-const nameMatch = data.match(/### Name\n\n(.+)/);
+const nameMatch = data[0].match(/### Name\n\n(.+)/);
 console.log("nameMatch:", nameMatch);
 const nameline = nameMatch ? nameMatch[1] : null;
 console.log("nameline:", nameline);
 
-const name = lines[0].match(/### Name\n\n(.+)/);
+const name = lines[1].match(/### Name\n\n(.+)/);
 const namel = name ? name[1] : null;
 console.log("name:", namel);
 
