@@ -1,0 +1,23 @@
+name: Parse Issue and Save Data
+
+on:
+  issues:
+    types:
+      - labeled
+
+jobs:
+  save-data:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v2
+    - name: Install Python
+      uses: actions/setup-python@v2
+      with:
+        python-version: 3.x
+    - name: Install dependencies
+      run: pip install requests
+    - name: Parse Issue and Save Data
+      run: python parse_issue.py
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
