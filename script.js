@@ -4,22 +4,19 @@ const fs = require('fs');
 const data = process.env.BODY;
 console.log("Body:", data);
 
-const data2 = "### Name\n\nDropbox\n\n### Domain\n\ndropbox.com\n\n### Documentation\n\nhttps://help.dropbox.com/account-access/enable-two-step-verification\n\n### Supported 2FA Methods\n\n- [X] TOTP (Google Authenticator)\n- [ ] U2F\n- [ ] sms\n- [ ] email";
-console.log("Body2:", data2);
-
 const lines = data.split("\r\n");
 console.log("lines:", lines);
 
 
-const nameMatch = data[0].match(/### Name\n\n(.+)/);
+const nameMatch = data.match(/### Name\n\n(.+)/);
 console.log("nameMatch:", nameMatch);
 const nameline = nameMatch ? nameMatch[1] : null;
 console.log("nameline:", nameline);
 
-
-const nameMatch2 = data.match(/### Name\n\n(.+)/);
-const namem = nameMatch2 ? nameMatch2[1] : null;
-console.log("namem:", namem);
+const nameMatch2 = lines.match(/### Name\n\n(.+)/);
+console.log("nameMatch2:", nameMatch2);
+const nameline2 = nameMatch2 ? nameMatch2[1] : null;
+console.log("nameline2:", nameline2);
 
 const name = lines.match(/### Name\n\n(.+)/)[1]
 console.log("name:", name);
