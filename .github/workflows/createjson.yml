@@ -34,4 +34,4 @@ jobs:
             
       - name: javascript
         run: |
-         cd scripts && node json.js
+         cd scripts && pwd

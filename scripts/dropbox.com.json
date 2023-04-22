@@ -1,0 +1,10 @@
+{
+  "Dropbox": {
+    "domain": "dropbox.com",
+    "tfa": [
+      "totp",
+      "u2f",
+      "sms"
+    ]
+  }
+}
