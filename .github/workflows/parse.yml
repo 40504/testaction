@@ -13,4 +13,4 @@ jobs:
     - name: Checkout repository
       uses: actions/checkout@v3
     - name: Parse Issue and Save Data
-      run: node parse_issue.js ${{ env.JSON }}
+      run: node parse_issue.js ${{ 'env.JSON' }}
