@@ -4,6 +4,11 @@ const { Octokit } = require('@octokit/rest');
 // Get the issue data from the command line arguments
 const issue = JSON.parse(process.argv[2]);
 
+if (!issue || typeof issue !== 'object') {
+  console.error('Error: Invalid issue data.');
+  process.exit(1);
+}
+
 // Authenticate with the GitHub API using the GITHUB_TOKEN secret
 const octokit = new Octokit({
   auth: process.env.GITHUB_TOKEN,
@@ -22,4 +27,5 @@ octokit.issues.get({
   fs.writeFileSync(filename, JSON.stringify(data, null, 2));
 }).catch(error => {
   console.error(error);
+  process.exit(1);
 });
