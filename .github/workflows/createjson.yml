@@ -21,6 +21,6 @@ jobs:
           body: |
             ${{ toJson(github.event.issue.body) }}
       
-      - name: Add comment
+      - name: run script
         run: |
           cd scripts && node json.js
