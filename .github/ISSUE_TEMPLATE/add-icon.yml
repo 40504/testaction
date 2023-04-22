@@ -8,7 +8,8 @@ body:
     attributes:
       label: Name
       description: Exact service name
-      placeholder: ex. Dropbox
+      # placeholder: ex. Dropbox
+      value: Dropbox
     validations:
       required: true
   - type: input
