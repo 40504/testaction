@@ -15,7 +15,7 @@ jobs:
         uses: actions/setup-node@v3
         with:
           node-version: 16
-      - run: node script.js
+      - run: node test.js
 
       - name: Commit
         run: |
