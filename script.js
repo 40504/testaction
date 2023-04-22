@@ -13,9 +13,10 @@ console.log("nameMatch:", nameMatch);
 const nameline = nameMatch ? nameMatch[1] : null;
 console.log("nameline:", nameline);
 
-const name = lines[0].match(/### Name\n\n(.+)/)[1];
+const name = lines[0].match(/### Name\n\n(.+)/);
 const namel = name ? name[1] : null;
 console.log("name:", namel);
+
 const domainName = lines[7];
 const documentationUrl = lines[10] !== "_No response_" ? lines[10] : null;
 const supported2FAMethods = lines
