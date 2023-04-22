@@ -1,10 +1,10 @@
 // const { log } = require('console');
 const fs = require('fs');
 
-const data = process.env.BODY.replace(`"`, "***") + "___MODIFIED___";
+const data = process.env.BODY.replace(`"`, "");
 console.log("Body1:", data);
 
-const lines = data.split("\r\n");
+const lines = data.split("\n\n");
 console.log("lines:", lines);
 
 const name = lines[4];
@@ -30,6 +30,6 @@ const json = {
   }
 };
 
-console.log(json)
+console.log("***************", json)
 
 fs.writeFileSync(domainName + '.json', JSON.stringify(json, null, 2));
