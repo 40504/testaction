@@ -1,4 +1,4 @@
-name: create a json file when a new issue is opened
+name: create a json file when a new issue is opened with label json
 on:
   issues:
     types:
