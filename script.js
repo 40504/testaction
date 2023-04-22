@@ -3,33 +3,31 @@
 
 const data = process.env.BODY;
 
-console.log("====================>", data);
+const lines = data.split("\n");
 
-// const lines = data.split("\n");
+const name = lines[2];
+const domainName = lines[6];
+const documentationUrl = lines[10] !== "_No response_" ? lines[10] : null;
+const supported2FAMethods = lines
+  .slice(14)
+  .filter(line => line.startsWith("- [X]"))
+  .map(line => {
+    const method = line.substring(5).trim();
+    if (method === "TOTP (Google Authenticator)") {
+      return "totp";
+    } else {
+      return method.toLowerCase();
+    }
+  });
 
-// const name = lines[2];
-// const domainName = lines[6];
-// const documentationUrl = lines[10] !== "_No response_" ? lines[10] : null;
-// const supported2FAMethods = lines
-//   .slice(14)
-//   .filter(line => line.startsWith("- [X]"))
-//   .map(line => {
-//     const method = line.substring(5).trim();
-//     if (method === "TOTP (Google Authenticator)") {
-//       return "totp";
-//     } else {
-//       return method.toLowerCase();
-//     }
-//   });
+const json = {
+  [name]: {
+    domain: domainName,
+    ...(documentationUrl && {documentation: documentationUrl}),
+    tfa: supported2FAMethods
+  }
+};
 
-// const json = {
-//   [name]: {
-//     domain: domainName,
-//     ...(documentationUrl && {documentation: documentationUrl}),
-//     tfa: supported2FAMethods
-//   }
-// };
+console.log(json)
 
-// console.log(json)
-
-// fs.writeFileSync(domainName + '.json', JSON.stringify(json, null, 2));
+fs.writeFileSync(domainName + '.json', JSON.stringify(json, null, 2));
