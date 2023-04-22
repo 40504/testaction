@@ -8,7 +8,7 @@ const lines = data.split("\r\n");
 console.log("lines:", lines);
 
 
-const nameMatch = lines[0].match(/### Name\n\n(.+)/);
+const nameMatch = data[0].match(/### Name\n\n(.+)/);
 console.log("nameMatch:", nameMatch);
 const nameline = nameMatch ? nameMatch[1] : null;
 console.log("nameline:", nameline);
