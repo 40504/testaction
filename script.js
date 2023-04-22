@@ -1,5 +1,5 @@
 // const { log } = require('console');
-// const fs = require('fs');
+const fs = require('fs');
 
 const data = process.env.BODY;
 
