@@ -24,6 +24,7 @@ jobs:
           git pull
           git add . -A
           git commit -a -m "update json"
+          git commit --allow-empty -a -m "regenerate"
       - name: Push
         uses: ad-m/github-push-action@master
         with:
