@@ -27,8 +27,7 @@ jobs:
           git config --local user.name "github-actions"
           git pull
           git add . -A
-          git commit -a -m "update json"
-          git commit --allow-empty -a -m "regenerate"
+          git commit --allow-empty -a -m "update json"
       - name: Push
         uses: ad-m/github-push-action@master
         with:
