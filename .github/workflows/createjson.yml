@@ -13,6 +13,14 @@ jobs:
     steps:
       - name: Check out scripts
         uses: actions/checkout@v3
+        uses: actions/checkout@v3
+        uses: actions/setup-node@v3
+        with:
+          node-version: 16
+        run: npm install
+        run: node script.js
+        env:
+          DATA: ${{ env.DATA }}
 
       - name: Add comment
         uses: peter-evans/create-or-update-comment@5f728c3dae25f329afbe34ee4d08eef25569d79f
@@ -20,12 +28,3 @@ jobs:
           issue-number: ${{ github.event.issue.number }}
           body: |
             ${{ toJson(github.event.issue.body) }}
-    steps:
-      - uses: actions/checkout@v3
-      - uses: actions/setup-node@v3
-        with:
-          node-version: 16
-      - run: npm install
-      - run: node script.js
-        env:
-          DATA: ${{ env.DATA }}
