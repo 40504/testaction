@@ -7,6 +7,7 @@ const lines = data.split("\n");
 console.log("lines======>", lines)
 
 const name = lines[2];
+console.log("name======>", name)
 const domainName = lines[6];
 const documentationUrl = lines[10] !== "_No response_" ? lines[10] : null;
 const supported2FAMethods = lines
