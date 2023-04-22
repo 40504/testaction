@@ -20,12 +20,14 @@ jobs:
           issue-number: ${{ github.event.issue.number }}
           body: |
             ${{ toJson(github.event.issue.body) }}
-      
-      - name: Add comment
-        uses: actions/setup-node@v3
+  
+  node:
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-node@v3
         with:
-          node-version: '16.x'
-        run: npm install
-        run: node script.js
+          node-version: 16
+      - run: npm install
+      - run: node script.js
         env:
           DATA: ${{ env.DATA }}
