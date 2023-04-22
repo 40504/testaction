@@ -13,11 +13,6 @@ console.log("nameMatch:", nameMatch);
 const nameline = nameMatch ? nameMatch[1] : null;
 console.log("nameline:", nameline);
 
-const nameMatch2 = lines[1].match(/### Name\n\n(.+)/);
-console.log("nameMatch2:", nameMatch2);
-const nameline2 = nameMatch2 ? nameMatch2[1] : null;
-console.log("nameline2:", nameline2);
-
 const name = lines.match(/### Name\n\n(.+)/)[1]
 console.log("name:", name);
 const domainName = lines[7];
