@@ -1,6 +1,6 @@
 const fs = require('fs');
 
-const data = "### Name\n\nDropbox\n\n### Domain\n\ndropbox.com\n\n### Documentation\n\n_No response_\n\n### Supported 2FA Methods\n\n- [X] TOTP (Google Authenticator)\n- [X] U2F\n- [X] sms\n- [ ] email";
+const data = process.env.BODY;
 
 const lines = data.split("\n");
 
