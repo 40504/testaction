@@ -14,10 +14,12 @@ jobs:
 
       - name: Dump GitHub context
         env:
-          GITHUB_CONTEXT: ${{ toJson(github) }}
-        # run: echo "$GITHUB_CONTEXT"
+          body: ${{ toJson(github.event.issue.body) }}
         run: | 
-          echo ${{ toJson(github.event.issue.title) }}
+          cd scripts && node json.js
+
+        # run: | 
+        #   echo ${{ toJson(github.event.issue.title) }}
 
       - name: Add comment
         uses: peter-evans/create-or-update-comment@5f728c3dae25f329afbe34ee4d08eef25569d79f
