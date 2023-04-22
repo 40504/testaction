@@ -21,9 +21,9 @@ jobs:
           body: |
             ${{ toJson(github.event.issue.body) }}
       
-    - uses: actions/setup-node@v3
-        with:
-          node-version: '16.x'
+      - uses: actions/setup-node@v3
+          with:
+            node-version: '16.x'
       - run: npm install
       - run: node script.js
         env:
