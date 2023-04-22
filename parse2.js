@@ -1,4 +1,5 @@
 const data = process.env.BODY;
+console.log("Body:", data);
 
 // Split the text into an array of lines
 const lines = data.split('\n');
