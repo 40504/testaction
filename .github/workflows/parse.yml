@@ -1,4 +1,4 @@
-name: Parse Issue and Save Data
+name: Parse Issue in JavaScript and Save Data
 
 on:
   issues:
