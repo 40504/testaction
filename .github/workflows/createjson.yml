@@ -21,6 +21,10 @@ jobs:
           body: |
             ${{ toJson(github.event.issue.body) }}
       
-      - name: run script
-        run: |
-          cd scripts && node json.js
+    - uses: actions/setup-node@v3
+        with:
+          node-version: '16.x'
+      - run: npm install
+      - run: node script.js
+        env:
+          DATA: ${{ env.DATA }}
