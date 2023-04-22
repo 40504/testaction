@@ -3,7 +3,7 @@ const fs = require('fs');
 
 const data = process.env.BODY;
 console.log("data======>", data)
-const lines = data.split("\n");
+const lines = data.split("###");
 console.log("lines======>", lines)
 
 const name = lines[2];
