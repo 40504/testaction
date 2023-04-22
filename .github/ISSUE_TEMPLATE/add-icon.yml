@@ -16,7 +16,7 @@ body:
     id: domain_name
     attributes:
       label: Domain
-      description: 
+      description: Exact domain name
       # placeholder: ex. dropbox.com
       value: dropbox.com
     validations:
