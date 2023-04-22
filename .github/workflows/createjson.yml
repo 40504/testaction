@@ -18,9 +18,9 @@ jobs:
         uses: actions/setup-node@v3
         with:
           node-version: 16
-        run: |
-          npm install
-          run: node script.js
+      - run: npm install
+      - run: node script.js
+      
         env:
           DATA: ${{ env.DATA }}
 
