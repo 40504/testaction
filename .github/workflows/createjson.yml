@@ -18,7 +18,6 @@ jobs:
         with:
           node-version: 16
       - run: node script.js
-
         env:
           BODY: ${{ env.BODY }}
 
