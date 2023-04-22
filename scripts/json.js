@@ -1,3 +1,4 @@
+const { log } = require('console');
 const fs = require('fs');
 
 const data = process.env.BODY;
@@ -26,5 +27,7 @@ const json = {
     tfa: supported2FAMethods
   }
 };
+
+console.log(json)
 
 fs.writeFileSync(domainName + '.json', JSON.stringify(json, null, 2));
