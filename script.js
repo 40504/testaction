@@ -2,7 +2,7 @@
 const fs = require('fs');
 
 const data = process.env.BODY;
-console.log("data======>", data)
+console.log("data======>", data.split("\n"))
 
 const lines = data.split("\n");
 console.log("lines======>", lines)
