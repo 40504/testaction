@@ -1,0 +1,14 @@
+name: Parse Issue and Save Data
+
+on:
+  issues:
+    types: [opened]
+
+jobs:
+  save-data:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v3
+    - name: Parse Issue and Save Data
+      run: node parse_issue.js ${{ toJson(github.event.issue) }}
