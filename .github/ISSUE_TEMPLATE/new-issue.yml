@@ -1,4 +1,4 @@
-name: Add Icon
+name: New Issue
 description: Suggest a service that support two-factor authentication (TOTP)
 title: Add [service name]
 labels: python
