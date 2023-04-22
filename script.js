@@ -10,6 +10,10 @@ console.log("Body1:", data1);
 const lines = data.split("\r\n");
 console.log("lines:", lines);
 
+
+const nameline = lines[0].match(/### Name\n\n(.+)/)[1];
+console.log("nameline:", nameline);
+
 const lines1 = data1.split("\r\n");
 console.log("lines1:", lines1);
 
