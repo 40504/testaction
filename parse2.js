@@ -13,7 +13,7 @@ for (let i = 0; i < lines.length; i++) {
   console.log("lines======>", line)
   if (line.startsWith('### Name')) {
     parsedData.name = lines[i+1].trim();
-    console.log("lines======>", parsedData)
+    console.log("lines======>", parsedData.name)
   }
   else if (line.startsWith('### Domain')) {
     parsedData.domain = lines[i+1].trim();
