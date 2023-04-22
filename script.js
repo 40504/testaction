@@ -16,7 +16,12 @@ console.log("nameMatch:", nameMatch);
 const nameline = nameMatch ? nameMatch[1] : null;
 console.log("nameline:", nameline);
 
-const name = lines[1].match(/### Name\n\n(.+)/);
+
+const nameMatch = data.match(/### Name\n\n(.+)/);
+const namem = nameMatch ? nameMatch[1] : null;
+console.log("namem:", namem);
+
+const name = lines.match(/### Name\n\n(.+)/)[1]
 console.log("name:", name);
 const domainName = lines[7];
 const documentationUrl = lines[10] !== "_No response_" ? lines[10] : null;
