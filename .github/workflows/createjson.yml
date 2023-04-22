@@ -8,18 +8,16 @@ jobs:
   add-comment:
     if: github.event.label.name == 'json'
     runs-on: ubuntu-latest
+    env:
+      BODY: ${{ toJson(github.event.issue.body) }}
     steps:
       - name: Check out scripts
         uses: actions/checkout@v3
-
-      - name: Dump GitHub context
+        uses: actions/setup-node@v2
+          with:
+            node-version: '14.x'
         env:
-          body: ${{ toJson(github.event.issue.body) }}
-        run: | 
-          cd scripts && node json.js
-
-        # run: | 
-        #   echo ${{ toJson(github.event.issue.title) }}
+          DATA: ${{ env.DATA }}  
 
       - name: Add comment
         uses: peter-evans/create-or-update-comment@5f728c3dae25f329afbe34ee4d08eef25569d79f
@@ -27,11 +25,3 @@ jobs:
           issue-number: ${{ github.event.issue.number }}
           body: |
             ${{ toJson(github.event.issue.body) }}
-            
-      # - name: Create file
-      #   run: |
-      #     printf "Hello\nWorld\n" > hw.txt
-            
-      - name: javascript
-        run: |
-         cd scripts && pwd
