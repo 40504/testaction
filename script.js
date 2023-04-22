@@ -7,8 +7,12 @@ console.log("Body:", data);
 const lines = data.split("\n");
 console.log("lines:", lines);
 
-const name = lines[3];
+const name = lines[4];
 console.log("name:", name);
+const name1 = lines[1];
+console.log("name1:", name1);
+const name0 = lines[0];
+console.log("name0:", name0);
 
 const domainName = lines[7];
 const documentationUrl = lines[10] !== "_No response_" ? lines[10] : null;
