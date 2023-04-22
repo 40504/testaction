@@ -1,4 +1,4 @@
-name: push a file
+name: testing create and push a file
 on:
   issues:
     types:
