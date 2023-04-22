@@ -1,37 +1,30 @@
-const data = "### Name\n\nTesla\n\n### Domain\n\ntesla.com\n\n### Documentation\n\nhttps://help.tesla.com/account-access/\n\n### Supported 2FA Methods\n\n- [X] TOTP (Google Authenticator)\n- [X] U2F\n- [ ] sms\n- [ ] email";
+const fs = require('fs');
 
-let name = "";
-let domainName = "";
-let documentationUrl = "";
-let supported2FAMethods = [];
+const data = "### Name\n\nDropbox\n\n### Domain\n\ndropbox.com\n\n### Documentation\n\n_No response_\n\n### Supported 2FA Methods\n\n- [X] TOTP (Google Authenticator)\n- [X] U2F\n- [X] sms\n- [ ] email";
 
 const lines = data.split("\n");
 
-for (let i = 0; i < lines.length; i++) {
-  const line = lines[i];
-  
-  if (line === "### Name") {
-    name = lines[i+2];
-  } else if (line === "### Domain") {
-    domainName = lines[i+2];
-  } else if (line === "### Documentation") {
-    documentationUrl = lines[i+2];
-  } else if (line === "### Supported 2FA Methods") {
-    for (let j = i+2; j < lines.length; j++) {
-      const methodLine = lines[j];
-      
-      if (methodLine.startsWith("- [")) {
-        const method = methodLine.substring(5).trim();
-        const enabled = methodLine[3] === "X";
-        supported2FAMethods.push({ method, enabled });
-      } else {
-        break;
-      }
+const name = lines[2];
+const domainName = lines[6];
+const documentationUrl = lines[10] !== "_No response_" ? lines[10] : null;
+const supported2FAMethods = lines
+  .slice(14)
+  .filter(line => line.startsWith("- [X]"))
+  .map(line => {
+    const method = line.substring(5).trim();
+    if (method === "TOTP (Google Authenticator)") {
+      return "totp";
+    } else {
+      return method.toLowerCase();
     }
-  }
-}
+  });
 
-console.log("name:", name);
-console.log("domain:", domainName);
-console.log("documentation:", documentationUrl);
-console.log("tfa:", supported2FAMethods);
+const json = {
+  [name]: {
+    domain: domainName,
+    ...(documentationUrl && {documentation: documentationUrl}),
+    tfa: supported2FAMethods
+  }
+};
+
+fs.writeFileSync(domainName + '.json', JSON.stringify(json, null, 2));
