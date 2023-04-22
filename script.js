@@ -17,8 +17,8 @@ const nameline = nameMatch ? nameMatch[1] : null;
 console.log("nameline:", nameline);
 
 
-const nameMatch = data.match(/### Name\n\n(.+)/);
-const namem = nameMatch ? nameMatch[1] : null;
+const nameMatch2 = data.match(/### Name\n\n(.+)/);
+const namem = nameMatch2 ? nameMatch2[1] : null;
 console.log("namem:", namem);
 
 const name = lines.match(/### Name\n\n(.+)/)[1]
