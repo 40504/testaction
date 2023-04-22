@@ -17,7 +17,7 @@ jobs:
         uses: actions/setup-node@v3
         with:
           node-version: 16
-      - run: node script.js
+      - run: node parse2.js
         env:
           BODY: ${{ env.BODY }}
 

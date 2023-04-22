@@ -1,4 +1,4 @@
-const data = "### Name\n\nDropbox\n\n### Domain\n\ndropbox.com\n\n### Documentation\n\n_No response_\n\n### Supported 2FA Methods\n\n- [X] TOTP (Google Authenticator)\n- [ ] U2F\n- [ ] sms\n- [ ] email"
+const data = process.env.BODY;
 console.log("Body:", data);
 
 // Split the text into an array of lines
