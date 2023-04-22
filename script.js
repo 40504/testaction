@@ -7,9 +7,6 @@ console.log("data======>", data)
 const lines = data.split("\n");
 console.log("lines======>", lines)
 
-const line = lines[i].trim();
-console.log("line======>", line)
-
 const name = lines[2];
 console.log("name======>", name)
 const domainName = lines[6];
