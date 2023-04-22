@@ -8,9 +8,9 @@ jobs:
   save-data:
     runs-on: ubuntu-latest
     env:
-      JSON: '{"number": 123, "title": "Test Issue"}'
+      BODY: ${{ toJson(github.event.issue.body) }}
     steps:
     - name: Checkout repository
       uses: actions/checkout@v3
     - name: Parse Issue and Save Data
-      run: node parse_issue.js ${{ 'env.JSON' }}
+      run: node script.js ${{ env.BODY }}
