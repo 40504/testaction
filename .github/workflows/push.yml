@@ -1,0 +1,30 @@
+name: push a file
+on:
+  issues:
+    types:
+      - labeled
+jobs:
+  add-comment:
+    if: github.event.label.name == 'json'
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out scripts
+        uses: actions/checkout@v3
+      
+      - name: node
+        uses: actions/setup-node@v3
+        with:
+          node-version: 16
+      - run: node script.js
+
+      - name: Commit
+        run: |
+          git config --local user.email "action@github.com"
+          git config --local user.name "github-actions"
+          git add . -A
+          git commit -a -m "update json"
+      - name: Push
+        uses: ad-m/github-push-action@master
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          branch: ${{ github.ref }}
