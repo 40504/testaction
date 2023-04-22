@@ -10,10 +10,10 @@ const parsedData = {};
 // Loop through the lines and extract the relevant information
 for (let i = 0; i < lines.length; i++) {
   const line = lines[i].trim();
-  console.log("lines======>", line)
+  console.log("line======>", line)
   if (line.startsWith('### Name')) {
     parsedData.name = lines[i+1].trim();
-    console.log("parsedDataName======>", parsedData.name)
+    console.log("parsedDataName======>", parsedData)
   }
   else if (line.startsWith('### Domain')) {
     parsedData.domain = lines[i+1].trim();
