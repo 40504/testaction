@@ -34,8 +34,7 @@ body:
       label: Supported 2FA Methods
       description: The service icon you request must support two-factor authentication, TOTP algoritm
       options:
-        - label: TOTP (Google Authenticator)
-          required: true
+        - label: TOTP (Google Authenti
         - label: U2F
         - label: sms
         - label: email

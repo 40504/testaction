@@ -1,7 +1,7 @@
 // const { log } = require('console');
 const fs = require('fs');
 
-const data = process.env.BODY.replace("\n", "***") + "___MODIFIED___";
+const data = process.env.BODY.replace(`"`, "***") + "___MODIFIED___";
 console.log("Body1:", data);
 
 const lines = data.split("\r\n");
