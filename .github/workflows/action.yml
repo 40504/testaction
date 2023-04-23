@@ -33,13 +33,13 @@ jobs:
             console.log(issue.title);
             console.log(issue.body);
 
-      - name: node
-        uses: actions/setup-node@v3
-        with:
-          node-version: 16
-      - run: node test.js
-        env:
-          BODY: ${{ env.BODY }}
+      # - name: node
+      #   uses: actions/setup-node@v3
+      #   with:
+      #     node-version: 16
+      # - run: node test.js
+      #   env:
+      #     BODY: ${{ env.BODY }}
 
       - name: Commit
         run: |
