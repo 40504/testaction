@@ -1,11 +1,12 @@
 name: create a json file when a new issue is opened with label json
-on:
-  issues:
-    types:
-      - labeled
 # on:
-#   push:
-#     branches: ["master"]
+#   issues:
+#     types:
+#       - labeled
+on:
+  push:
+    branches: ["master"]
+
 jobs:
   add-comment:
     if: github.event.label.name == 'json'
@@ -16,6 +17,20 @@ jobs:
       - name: Check out scripts
         uses: actions/checkout@v3
       
+      - name: Parse Issue
+        uses: actions/github-script@v4
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          script: |
+            const issueNumber = 155; // replace with the number of the issue you want to parse
+            const { data: issue } = await github.issues.get({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              issue_number: issueNumber
+            });
+            console.log(issue.title);
+            console.log(issue.body);
+
       - name: node
         uses: actions/setup-node@v3
         with:
