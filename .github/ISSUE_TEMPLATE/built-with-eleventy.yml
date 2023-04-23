@@ -19,10 +19,6 @@ body:
       value: dropbox.com
     validations:
       required: true
-  - type: markdown
-    attributes:
-      value: |
-        Please note that site HTML must now include a `<meta name="generator" content="Eleventy">` (or at least `Eleventy` somewhere in the `content` attribute) to be eligible for the Eleventy Leaderboards.
   - type: input
     id: documentation
     attributes:
@@ -34,7 +30,7 @@ body:
   - type: textarea
     id: tfa
     attributes:
-      label: "Authors (GitHub usernames)"
+      label: Supported 2FA Methods
       description: "Optional: _Leave this empty if you are the only author._ If you are listing one or more other authors, make sure to include yourself in this list! _[parser:usernames]_"
       value: "totp, sms"
     validations:
