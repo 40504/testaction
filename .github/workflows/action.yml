@@ -5,7 +5,8 @@ name: create a json file when a new issue is opened with label json
 #       - labeled
 on:
   push:
-    branches: ["master"]
+    branches: 
+      - master
 
 jobs:
   add-comment:
