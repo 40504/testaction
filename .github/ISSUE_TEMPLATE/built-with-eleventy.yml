@@ -32,6 +32,6 @@ body:
     attributes:
       label: Supported 2FA Methods
       description: "Optional: _Leave this empty if you are the only author._ If you are listing one or more other authors, make sure to include yourself in this list! _[parser:usernames]_"
-      value: "totp, sms"
+      value: "totp"
     validations:
       required: false
