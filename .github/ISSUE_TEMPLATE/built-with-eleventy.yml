@@ -3,10 +3,16 @@ description: Show off your Eleventy site on the Eleventy documentation
 title: "[Built with Eleventy] I built something!"
 labels: built-with-eleventy
 body:
-  - type: markdown
+  - type: checkboxes
+    id: 2fa_method
     attributes:
-      value: |
-        Only the site URL is required. All other fields are optional.
+      label: Supported 2FA Methods
+      description: The service icon you request must support two-factor authentication, TOTP algoritm
+      options:
+        - label: TOTP (Google Authenti
+        - label: U2F
+        - label: sms
+        - label: email
   - type: input
     id: url
     attributes:
@@ -33,29 +39,5 @@ body:
       label: "Authors (GitHub usernames)"
       description: "Optional: _Leave this empty if you are the only author._ If you are listing one or more other authors, make sure to include yourself in this list! _[parser:usernames]_"
       value: "@pdehaan"
-    validations:
-      required: false
-  - type: input
-    id: opencollective
-    attributes:
-      label: Open Collective Username
-      description: "Optional: This marks you as a supporter on the docs. Shown in the URL of your Open Collective profile URL."
-      value: zachleat
-    validations:
-      required: false
-  - type: input
-    id: business_url
-    attributes:
-      label: Super Professional Business Network CTA URL
-      description: "Optional: Open Collective Members can be featured on the [Eleventy Super Professional Business Network](https://www.11ty.dev/super-professional-business-network/). Requires a valid Open Collective Username above._[parser:url]_"
-      value: https://www.zachleat.com/
-    validations:
-      required: false
-  - type: input
-    id: business_name
-    attributes:
-      label: Super Professional Business Network Company Name
-      description: "Optional: The company name used on the [Eleventy Super Professional Business Network](https://www.11ty.dev/super-professional-business-network/)"
-      value: Zach’s Web Design Emporium
     validations:
       required: false

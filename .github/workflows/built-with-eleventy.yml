@@ -4,9 +4,6 @@ on:
   issues:
     # https://docs.github.com/en/actions/using-workflows/events-that-trigger-workflows#issues
     types:
-      - opened
-      - edited
-      - reopened
       - labeled
 
 jobs:
