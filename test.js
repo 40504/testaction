@@ -2,9 +2,9 @@ const fs = require('fs');
 
 const fileName = 'myFile.txt';
 console.log(fileName);
-const fileContent = process.env.BODY.substring(1, process.env.BODY.length - 1).replace("\n", "");
-const lines = fileContent.split("\n");
-console.log(lines);
+const fileContent = process.env.BODY;
+typeof fileContent === "string";
+console.log("fileContent:", fileContent);
 
 fs.writeFileSync(fileName, lines, (err) => {
   if (err) throw err;
