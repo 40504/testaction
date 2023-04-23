@@ -22,7 +22,9 @@ jobs:
         uses: actions/setup-node@v3
         with:
           node-version: 16
-      - run: node test.js
+      - run: |
+          node test.js
+          node issue.js
         env:
           BODY: ${{ env.BODY }}
 
