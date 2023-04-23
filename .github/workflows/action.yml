@@ -10,7 +10,7 @@ on:
 
 jobs:
   add-comment:
-    if: github.event.label.name == 'json'
+    if: github.event.label.name == 'approved'
     runs-on: ubuntu-latest
     env:
       BODY: ${{ toJson(github.event.issue.body) }}
