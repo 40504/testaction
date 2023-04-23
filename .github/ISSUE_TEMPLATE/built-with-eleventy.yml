@@ -35,11 +35,3 @@ body:
       value: "totp, sms"
     validations:
       required: false
-  - type: checkboxes
-    id: tfa2
-    attributes:
-      label: Supported 2FA Methods
-      description: "The service icon you request must support two-factor authentication, TOTP algoritm _[parser:usernames]_"
-      options:
-        - label: sms
-        - label: email
