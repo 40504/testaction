@@ -12,14 +12,14 @@ jobs:
   add-comment:
     if: github.event.label.name == 'approved'
     runs-on: ubuntu-latest
-    env:
-      BODY: ${{ toJson(github.event.issue.body) }}
+    # env:
+    #   BODY: ${{ toJson(github.event.issue.body) }}
     steps:
       - name: Check out scripts
         uses: actions/checkout@v3
       
       - name: Parse Issue
-        uses: actions/github-script@v4
+        uses: actions/github-script@v6
         with:
           github-token: ${{ secrets.GITHUB_TOKEN }}
           script: |
