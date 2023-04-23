@@ -4,11 +4,19 @@ title: "[Built with Eleventy] I built something!"
 labels: built-with-eleventy
 body:
   - type: input
-    id: url
+    id: name
     attributes:
       label: Site URL
       description: The home page of the live web site you built. _[parser:url]_
-      value: https://www.zachleat.com/
+      value: Dropbox
+    validations:
+      required: true
+  - type: input
+    id: domain
+    attributes:
+      label: Site URL
+      description: The home page of the live web site you built. _[parser:url]_
+      value: dropbox.com
     validations:
       required: true
   - type: markdown
@@ -16,15 +24,15 @@ body:
       value: |
         Please note that site HTML must now include a `<meta name="generator" content="Eleventy">` (or at least `Eleventy` somewhere in the `content` attribute) to be eligible for the Eleventy Leaderboards.
   - type: input
-    id: source_url
+    id: documentation
     attributes:
       label: Source code URL
       description: "Optional: The URL to the **public** repository for the source code for this site. _[parser:url]_"
-      value: https://github.com/zachleat/zachleat.com
+      value: https://help.dropbox.com/account-access/enable-two-step-verification
     validations:
       required: false
   - type: textarea
-    id: authors
+    id: tfa
     attributes:
       label: "Authors (GitHub usernames)"
       description: "Optional: _Leave this empty if you are the only author._ If you are listing one or more other authors, make sure to include yourself in this list! _[parser:usernames]_"
@@ -32,7 +40,7 @@ body:
     validations:
       required: false
   - type: checkboxes
-    id: 2fa_method
+    id: tfa
     attributes:
       label: Supported 2FA Methods
       description: "The service icon you request must support two-factor authentication, TOTP algoritm _[parser:usernames]_"
