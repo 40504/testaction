@@ -7,7 +7,7 @@ body:
     id: name
     attributes:
       label: Site Name
-      description: The home page of the live web site you built. _[parser:url]_
+      description: The service name of the live web site you built. _[parser:url]_
       value: Dropbox
     validations:
       required: true
