@@ -1,9 +1,8 @@
 const fs = require('fs');
-typeof fileContent === "string";
-
 const fileName = 'myFile.txt';
 console.log(fileName);
 const fileContent = process.env.BODY;
+typeof fileContent === "string";
 console.log("fileContent:", fileContent);
 
 console.log(typeof fileContent);
