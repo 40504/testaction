@@ -1,12 +1,14 @@
 const fs = require('fs');
+typeof fileContent === "string";
 
 const fileName = 'myFile.txt';
 console.log(fileName);
 const fileContent = process.env.BODY;
-typeof fileContent === "string";
 console.log("fileContent:", fileContent);
 
-fs.writeFileSync(fileName, lines, (err) => {
+console.log(typeof fileContent);
+
+fs.writeFileSync(fileName, fileContent, (err) => {
   if (err) throw err;
   console.log('File created successfully');
 });
