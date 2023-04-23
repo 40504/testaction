@@ -1,8 +1,17 @@
-const issueNumber = 155; // replace with the number of the issue you want to parse
-    const { data: issue } = await github.issues.get({
-      owner: context.repo.owner,
-      repo: context.repo.repo,
-      issue_number: issueNumber
-    });
-    console.log(issue.title);
-    console.log(issue.body);
+const { Octokit } = require("@octokit/rest");
+
+const octokit = new Octokit({
+  auth: process.env.GITHUB_TOKEN,
+});
+
+async function getIssue(issueNumber) {
+  const { data: issue } = await octokit.issues.get({
+    owner: "octokit",
+    repo: "rest.js",
+    issue_number: issueNumber,
+  });
+  console.log(issue.title);
+  console.log(issue.body);
+}
+
+getIssue(155);
