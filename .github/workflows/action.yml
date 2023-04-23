@@ -1,11 +1,14 @@
 name: create a json file when a new issue is opened with label json
+# on:
+#   issues:
+#     types:
+#       - labeled
 on:
-  issues:
-    types:
-      - labeled
+  push:
+    branches: ["master"]
 jobs:
   add-comment:
-    if: github.event.label.name == 'json'
+    if: github.event.label.name == 'approved'
     runs-on: ubuntu-latest
     env:
       BODY: ${{ toJson(github.event.issue.body) }}
@@ -17,7 +20,7 @@ jobs:
         uses: actions/setup-node@v3
         with:
           node-version: 16
-      - run: node script.js
+      - run: node test.js
         env:
           BODY: ${{ env.BODY }}
 
