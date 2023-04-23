@@ -3,16 +3,6 @@ description: Show off your Eleventy site on the Eleventy documentation
 title: "[Built with Eleventy] I built something!"
 labels: built-with-eleventy
 body:
-  - type: checkboxes
-    id: 2fa_method
-    attributes:
-      label: Supported 2FA Methods
-      description: The service icon you request must support two-factor authentication, TOTP algoritm
-      options:
-        - label: TOTP (Google Authenti
-        - label: U2F
-        - label: sms
-        - label: email
   - type: input
     id: url
     attributes:
@@ -38,6 +28,6 @@ body:
     attributes:
       label: "Authors (GitHub usernames)"
       description: "Optional: _Leave this empty if you are the only author._ If you are listing one or more other authors, make sure to include yourself in this list! _[parser:usernames]_"
-      value: "@pdehaan"
+      value: "totp"
     validations:
       required: false
