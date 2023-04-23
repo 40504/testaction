@@ -40,7 +40,7 @@ body:
     validations:
       required: false
   - type: checkboxes
-    id: tfa
+    id: tfa2
     attributes:
       label: Supported 2FA Methods
       description: "The service icon you request must support two-factor authentication, TOTP algoritm _[parser:usernames]_"
