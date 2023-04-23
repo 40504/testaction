@@ -38,5 +38,4 @@ body:
       description: "The service icon you request must support two-factor authentication, TOTP algoritm _[parser:usernames]_"
       options:
         - label: sms
-          description: "sms _[parser:url]_"
         - label: email
