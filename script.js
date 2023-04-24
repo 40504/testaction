@@ -8,10 +8,11 @@ console.log("Body:", data);
 const data0 = "### Name\n\nDropbox\n\n### Domain\n\ndropbox.com\n\n### Documentation\n\nhttps://help.dropbox.com/account-access/enable-two-step-verification\n\n### Supported 2FA Methods\n\n- [ ] TOTP (Google Authenti\n- [ ] U2F\n- [ ] sms\n- [ ] email";
 console.log("Body0:", data0);
 
-const data2 = process.env.BODY[2];
-console.log("Body2:", data2);
+const data2 = process.env.BODY;
+const stringdata = data2.toString();
+console.log("Body2:", stringdata);
 
-const lines = data0.split('\r\n');
+const lines = data0.split('\n');
 console.log("lines:", lines);
 
 // const name = lines[4];
