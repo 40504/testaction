@@ -10,8 +10,6 @@ jobs:
     runs-on: ubuntu-latest
     env:
       BODY: ${{ toJson(github.event.issue.body) }}
-    env:
-      TEST: ${{ test }}
     steps:
       - name: Check out scripts
         uses: actions/checkout@v3
@@ -31,7 +29,7 @@ jobs:
           git config --local user.name "github-actions"
           git pull
           git add . -A
-          git commit --allow-empty -a -m "${{ env.TEST }}"
+          git commit --allow-empty -a -m "${{ env.BODY }}"
       - name: Push
         uses: ad-m/github-push-action@master
         with:
