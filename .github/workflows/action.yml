@@ -10,7 +10,7 @@ on:
 
 jobs:
   add-comment:
-    if: github.event.label.name == 'approved'
+    if: github.event.label.name == 'json'
     runs-on: ubuntu-latest
     env:
       BODY: ${{ toJson(github.event.issue.body) }}
@@ -23,10 +23,17 @@ jobs:
         with:
           node-version: 16
       - run: |
-          # node test.js
-          # node issue.js
+          node script.js
         env:
           BODY: ${{ env.BODY }}
+
+      - name: issue number
+        uses: actions/github-script@v6
+        with:
+          script: |
+            github.rest.issues({
+              issue_number: context.issue.number
+            }) 
 
       - name: Commit
         run: |

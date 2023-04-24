@@ -14,10 +14,4 @@ jobs:
               owner: context.repo.owner,
               repo: context.repo.repo,
               labels: ['Triage']
-              const { data: issue } = await github.issues.get({
-              owner: context.repo.owner,
-              repo: context.repo.repo,
-            });
-            console.log(issue.title);
-            console.log(issue.body);
             })
