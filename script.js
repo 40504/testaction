@@ -12,7 +12,7 @@ const data2 = process.env.BODY;
 const stringdata = data2.toString();
 console.log("Body2:", stringdata);
 
-const lines = data0.split('\n');
+const lines = stringdata.split('\n');
 console.log("lines:", lines);
 
 // const name = lines[4];
