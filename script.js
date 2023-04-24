@@ -3,9 +3,9 @@ const fs = require('fs');
 
 // const data = process.env.BODY.substring(1, process.env.BODY.length - 1).replace("\n", "");
 const data = process.env.BODY.replaceAll('"', "");
-console.log("Body:", data);
+// console.log("Body:", data);
 const lines = data.split("\\n\\n");
-console.log("lines:", lines);
+// console.log("lines:", lines);
 
 const name = lines[1];
 const domainName = lines[3];
@@ -24,7 +24,7 @@ const json = {
   [name]: {
     domain: domainName,
     ...(documentationUrl && {documentation: documentationUrl}),
-    tfa: supported2FAMethods
+    tfa: tfa_lines
   }
 };
 
