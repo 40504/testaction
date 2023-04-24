@@ -10,6 +10,13 @@ console.log("lines:", lines);
 const name = lines[1];
 const domainName = lines[3];
 const documentationUrl = lines[5] !== "_No response_" ? lines[5] : null;
+const tfalines = lines[6];
+console.log("lines:", tfalines);
+const falines = tfalines.split("\\n");
+console.log("falines:", falines);
+
+
+
 const supported2FAMethods = lines
   .slice(6)
   .filter(line => line.startsWith("- [X]"))
