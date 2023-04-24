@@ -10,31 +10,15 @@ console.log("lines:", lines);
 const name = lines[1];
 const domainName = lines[3];
 const documentationUrl = lines[5] !== "_No response_" ? lines[5] : null;
-const tfalines = lines[7];
-console.log("tfalines:", tfalines);
-const falines = tfalines.split("\\n");
-console.log("falines:", falines);
-console.log("falines0:", falines[0]);
-console.log("falines1:", falines[1]);
 
-const x_lines = falines
+const supported_2FA_methods = lines[7].split("\\n");
+console.log("supported_2FA_methods:", supported_2FA_methods);
+
+const tfa_lines = supported_2FA_methods
     .filter(line => line.startsWith('- [X]'))
     .map(line => line.substring(5));
 
-console.log("falines1:", x_lines);
-
-
-const supported2FAMethods = lines
-  .slice(7)
-  .filter(line => line.startsWith("- [X]"))
-  .map(line => {
-    const method = line.substring(5).trim("\\n");
-    if (method === "totp") {
-      return "totp";
-    } else {
-      return method.toLowerCase();
-    }
-  });
+console.log("tfa_lines:", tfa_lines);
 
 const json = {
   [name]: {
