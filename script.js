@@ -17,7 +17,7 @@ console.log("falines:", falines);
 console.log("falines0:", falines[0]);
 console.log("falines1:", falines[1]);
 
-const x_lines = data.falines.filter(line => line.startsWith('- [X]'));
+const x_lines = falines.filter(line => line.startsWith('- [X]'));
 console.log("falines1:", x_lines);
 
 
