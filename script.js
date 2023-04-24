@@ -11,7 +11,7 @@ console.log("Body0:", data0);
 const data2 = process.env.BODY[2];
 console.log("Body2:", data2);
 
-const lines = data.split('\r\n');
+const lines = data0.split('\r\n');
 console.log("lines:", lines);
 
 // const name = lines[4];
