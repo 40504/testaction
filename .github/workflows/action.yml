@@ -45,6 +45,7 @@ jobs:
             ${{ toJson(github.event.issue.body) }}
 
       - name: Close issue
+        uses: peter-evans/close-issue@v1
         with:
           issue-number: "${{ env.IssueNumber }}"
           comment: "Thank you! Your data file has been added!"
