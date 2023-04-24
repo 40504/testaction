@@ -12,7 +12,7 @@ const domainName = lines[3];
 const documentationUrl = lines[5] !== "_No response_" ? lines[5] : null;
 const tfalines = lines[7];
 console.log("tfalines:", tfalines);
-const falines = tfalines.split("\\n");
+const falines = tfalines.split("\n");
 console.log("falines:", falines);
 
 
