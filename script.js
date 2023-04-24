@@ -2,7 +2,7 @@
 const fs = require('fs');
 
 // const data = process.env.BODY.substring(1, process.env.BODY.length - 1).replace("\n", "");
-const data = process.env.BODY.split('\r\n')[0];
+const data = process.env.BODY.split("'\'")[0];
 console.log("Body:", data);
 
 const lines = data.split("\r\n");
