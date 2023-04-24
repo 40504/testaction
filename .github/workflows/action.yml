@@ -29,7 +29,7 @@ jobs:
           git config --local user.name "github-actions"
           git pull
           git add . -A
-          git commit --allow-empty -a -m "issue_id: ${{ github.event.issue.number }}"
+          git commit --allow-empty -a -m "issue_id: #${{ github.event.issue.number }}"
 
       - name: Push
         uses: ad-m/github-push-action@master
