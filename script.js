@@ -11,11 +11,11 @@ const name = lines[1];
 const domainName = lines[3];
 const documentationUrl = lines[5] !== "_No response_" ? lines[5] : null;
 const supported2FAMethods = lines
-  .slice(5)
+  .slice(6)
   .filter(line => line.startsWith("- [X]"))
   .map(line => {
-    const method = line.substring(5).trim("\\n");
-    if (method === "totp") {
+    const method = line.substring(5).trim();
+    if (method === "totp\\n") {
       return "totp";
     } else {
       return method.toLowerCase();
