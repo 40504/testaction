@@ -11,11 +11,11 @@ const name = lines[1];
 const domainName = lines[3];
 const documentationUrl = lines[5] !== "_No response_" ? lines[5] : null;
 const supported2FAMethods = lines
-  .slice(6)
+  .slice(7)
   .filter(line => line.startsWith("- [X]"))
   .map(line => {
-    const method = line.substring(7).trim();
-    if (method === "totp") {
+    const method = line.substring(7).trim("\\n");
+    if (method === "TOTP (Google Authenticator)") {
       return "totp";
     } else {
       return method.toLowerCase();
