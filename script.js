@@ -14,6 +14,8 @@ const tfalines = lines[7];
 console.log("tfalines:", tfalines);
 const falines = tfalines.split("\\n");
 console.log("falines:", falines);
+console.log("falines:", falines[0]);
+console.log("falines:", falines[1]);
 
 
 
@@ -21,7 +23,7 @@ const supported2FAMethods = lines
   .slice(7)
   .filter(line => line.startsWith("- [X]"))
   .map(line => {
-    const method = line.substring(5).trim("\\");
+    const method = line.substring(5).trim("\\n");
     if (method === "totp") {
       return "totp";
     } else {
