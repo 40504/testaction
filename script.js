@@ -17,7 +17,10 @@ console.log("falines:", falines);
 console.log("falines0:", falines[0]);
 console.log("falines1:", falines[1]);
 
-const x_lines = falines.filter(line => line.startsWith('- [X]'));
+const x_lines = falines
+    .filter(line => line.startsWith('- [X]'))
+    .map(line => line.substring(5));
+
 console.log("falines1:", x_lines);
 
 
@@ -25,7 +28,7 @@ const supported2FAMethods = lines
   .slice(7)
   .filter(line => line.startsWith("- [X]"))
   .map(line => {
-    const method = line.substring(5);
+    const method = line.substring(5).trim("\\n");
     if (method === "totp") {
       return "totp";
     } else {
