@@ -3,10 +3,6 @@ on:
   issues:
     types:
       - labeled
-# on:
-#   push:
-#     branches: 
-#       - master
 
 jobs:
   add-comment:
@@ -14,6 +10,8 @@ jobs:
     runs-on: ubuntu-latest
     env:
       BODY: ${{ toJson(github.event.issue.body) }}
+    env:
+      TEST: test
     steps:
       - name: Check out scripts
         uses: actions/checkout@v3
@@ -33,16 +31,16 @@ jobs:
           git config --local user.name "github-actions"
           git pull
           git add . -A
-          git commit --allow-empty -a -m "update json"
+          git commit --allow-empty -a -m "${{ env.TEST }}"
       - name: Push
         uses: ad-m/github-push-action@master
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           branch: ${{ github.ref }}
 
-      # - name: Add comment
-      #   uses: peter-evans/create-or-update-comment@5f728c3dae25f329afbe34ee4d08eef25569d79f
-      #   with:
-      #     issue-number: ${{ github.event.issue.number }}
-      #     body: |
-      #       ${{ toJson(github.event.issue.body) }}
+      - name: Add comment
+        uses: peter-evans/create-or-update-comment@5f728c3dae25f329afbe34ee4d08eef25569d79f
+        with:
+          issue-number: ${{ github.event.issue.number }}
+          body: |
+            ${{ toJson(github.event.issue.body) }}
