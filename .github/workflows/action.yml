@@ -44,13 +44,7 @@ jobs:
           body: |
             ${{ toJson(github.event.issue.body) }}
 
-      - name: Close issue
-        uses: peter-evans/close-issue@v1
-        with:
-          issue-number: "${{ env.IssueNumber }}"
-          comment: "Thank you! Your data file has been added!"
-
-      - name: add label
+      - name: Add label
         uses: actions/github-script@v6
         with:
           script: |
