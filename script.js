@@ -15,7 +15,7 @@ const supported2FAMethods = lines
   .filter(line => line.startsWith("- [X]"))
   .map(line => {
     const method = line.substring(7).trim("\\n");
-    if (method === "TOTP (Google Authenticator)") {
+    if (method === "totp") {
       return "totp";
     } else {
       return method.toLowerCase();
