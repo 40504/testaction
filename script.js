@@ -14,16 +14,18 @@ const tfalines = lines[7];
 console.log("tfalines:", tfalines);
 const falines = tfalines.split("\\n");
 console.log("falines:", falines);
-console.log("falines:", falines[0]);
-console.log("falines:", falines[1]);
+console.log("falines0:", falines[0]);
+console.log("falines1:", falines[1]);
 
+const x_lines = data.falines.filter(line => line.startsWith('- [X]'));
+console.log("falines1:", x_lines);
 
 
 const supported2FAMethods = lines
   .slice(7)
   .filter(line => line.startsWith("- [X]"))
   .map(line => {
-    const method = line.substring(5).trim("\\n");
+    const method = line.substring(5);
     if (method === "totp") {
       return "totp";
     } else {
