@@ -5,8 +5,11 @@ const fs = require('fs');
 const data = process.env.BODY[0].replace('"', "");
 console.log("Body:", data);
 
-const data1 = process.env.BODY[1];
-console.log("Body1:", data1);
+const data0 = process.env.BODY.replace('"', "");
+console.log("Body0:", data0);
+
+const data2 = process.env.BODY[2];
+console.log("Body2:", data2);
 
 const lines = data.split('\r\n');
 console.log("lines:", lines);
