@@ -22,4 +22,4 @@ const json = {
 
 console.log("***************", json)
 
-fs.writeFileSync('files' + domainName + '.json', JSON.stringify(json, null, 2));
+fs.writeFileSync('../files/' + domainName + '.json', JSON.stringify(json, null, 2));
