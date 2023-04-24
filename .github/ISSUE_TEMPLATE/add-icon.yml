@@ -35,6 +35,7 @@ body:
       description: The service icon you request must support two-factor authentication, TOTP algoritm
       options:
         - label: totp
+          required: true
         - label: u2f
         - label: sms
         - label: email
