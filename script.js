@@ -22,4 +22,6 @@ const json = {
 
 console.log("***************", json)
 
-fs.writeFileSync('../files/' + domainName + '.json', JSON.stringify(json, null, 2));
+const filePath = path.join(__dirname, 'files', domainName + '.json');
+fs.writeFileSync(domainName + '.json', JSON.stringify(json, null, 2));
+console.log('Saved the filtered lines to', filePath);
