@@ -22,7 +22,7 @@ const supported2FAMethods = lines
   .filter(line => line.startsWith("- [X]"))
   .map(line => {
     const method = line.substring(5).trim();
-    if (method === "totp\\n") {
+    if (method === "totp") {
       return "totp";
     } else {
       return method.toLowerCase();
