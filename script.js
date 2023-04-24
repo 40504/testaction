@@ -12,13 +12,13 @@ const domainName = lines[3];
 const documentationUrl = lines[5] !== "_No response_" ? lines[5] : null;
 const tfalines = lines[7];
 console.log("tfalines:", tfalines);
-const falines = tfalines.split("'\'");
+const falines = tfalines.split("[");
 console.log("falines:", falines);
 
 
 
 const supported2FAMethods = lines
-  .slice(6)
+  .slice(7)
   .filter(line => line.startsWith("- [X]"))
   .map(line => {
     const method = line.substring(5).trim();
