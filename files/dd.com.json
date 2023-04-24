@@ -1,0 +1,9 @@
+{
+  "Dropbox": {
+    "domain": "dd.com",
+    "documentation": "https://help.dropbox.com/account-access/enable-two-step-verification",
+    "tfa": [
+      "totp"
+    ]
+  }
+}
