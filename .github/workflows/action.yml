@@ -44,13 +44,25 @@ jobs:
       #     body: |
       #       ${{ toJson(github.event.issue.body) }}
 
-      - name: Add label
+      # - name: Add label
+      #   uses: actions/github-script@v6
+      #   with:
+      #     script: |
+      #       github.rest.issues.addLabels({
+      #         issue_number: context.issue.number,
+      #         owner: context.repo.owner,
+      #         repo: context.repo.repo,
+      #         labels: ['automate']
+      #       })
+
+      - name: Read data from JS file
         uses: actions/github-script@v6
         with:
           script: |
-            github.rest.issues.addLabels({
-              issue_number: context.issue.number,
-              owner: context.repo.owner,
-              repo: context.repo.repo,
-              labels: ['automate']
-            })
+            const fs = require('fs');
+            const path = require('path');
+
+            const filePath = path.join(process.env.GITHUB_WORKSPACE, 'path', 'to', 'script.js');
+            const fileData = fs.readFileSync(filePath, 'utf-8');
+
+            console.log('File data:', fileData);
