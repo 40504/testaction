@@ -30,6 +30,7 @@ jobs:
           git pull
           git add . -A
           git commit --allow-empty -a -m "update"
+
       - name: Push
         uses: ad-m/github-push-action@master
         with:
@@ -47,3 +48,14 @@ jobs:
         with:
           issue-number: "${{ env.IssueNumber }}"
           comment: "Thank you! Your data file has been added!"
+
+      - name: add label
+        uses: actions/github-script@v6
+        with:
+          script: |
+            github.rest.issues.addLabels({
+              issue_number: context.issue.number,
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              labels: ['automate']
+            })
