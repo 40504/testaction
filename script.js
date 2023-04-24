@@ -28,4 +28,4 @@ const json = {
 
 console.log("***************", json)
 
-// fs.writeFileSync(domainName + '.json', JSON.stringify(json, null, 2));
+fs.writeFileSync(domainName + '.json', JSON.stringify(json, null, 2));
