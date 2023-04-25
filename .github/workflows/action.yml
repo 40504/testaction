@@ -50,7 +50,7 @@ jobs:
       - uses: actions/github-script@v6
         with:
           script: |
-            const variableValue = require('./script.js').json;
+            const variableValue = require('./script.js');
             console.log('Variable value:', variableValue);
 
       # - name: Add label
