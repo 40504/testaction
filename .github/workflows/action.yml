@@ -46,13 +46,21 @@ jobs:
 
   comment:
     runs-on: ubuntu-latest
+    outputs:
+      variable-value: ${{ steps.get-value.outputs.variable-value }}
     steps:
       - uses: actions/github-script@v6
         with:
           script: |
-            console.log(__dirname)
-            const variableValue = require('./script.js');
+            const variableValue = require('./script.js').json;
             console.log('Variable value:', variableValue);
+            
+            // Set output variable for later use
+            if (variableValue !== undefined) {
+              process.stdout.write("{variable-value}={variableValue}" >> $GITHUB_OUTPUT);
+            }
+            const script = require('./script.js').json
+            console.log(script({github, context}))
 
       # - name: Add label
       #   uses: actions/github-script@v6
