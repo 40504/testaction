@@ -10,8 +10,6 @@ jobs:
     runs-on: ubuntu-latest
     env:
       BODY: ${{ toJson(github.event.issue.body) }}
-    env:
-      SHA: ${{env.parentSHA}}
     steps:
       - name: Check out scripts
         uses: actions/checkout@v3
@@ -48,6 +46,8 @@ jobs:
 
       - name: Add comment
         uses: actions/github-script@v6
+        env:
+          BODY: ${{ env.parentSHA }}
         with:
           script: |
             const script = require('./script.js').json
