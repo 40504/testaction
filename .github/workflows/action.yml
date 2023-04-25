@@ -52,7 +52,7 @@ jobs:
       - uses: actions/github-script@v6
         with:
           script: |
-            const variableValue = require('/script.js').json;
+            const variableValue = require('../script.js').json;
             console.log('Variable value:', variableValue);
             
             // Set output variable for later use
