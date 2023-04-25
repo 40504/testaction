@@ -1,6 +1,5 @@
 const fs = require('fs');
 const path = require('path');
-const octokit = require('octokit');
 
 const { payload } = context;
 const { issue: { number }, repository: { owner, issuename } } = payload;
