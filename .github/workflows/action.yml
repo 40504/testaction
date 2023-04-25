@@ -48,7 +48,7 @@ jobs:
             
             // Set output variable for later use
             if (variableValue == undefined) {
-              process.stdout.write(`::set-output name=variable-value::${variableValue}`);
+              process.stdout.write("{name}={variable-value}" >> ${variableValue});
             }
 
       - name: Add comment
