@@ -47,7 +47,7 @@ jobs:
             console.log('Variable value:', variableValue);
             
             // Set output variable for later use
-            if (variableValue !== undefined) {
+            if (variableValue == undefined) {
               process.stdout.write(`::set-output name=variable-value::${variableValue}`);
             }
 
