@@ -44,7 +44,6 @@ jobs:
           body: |
             ${{ needs.create-json-from-issue.outputs.variable-value }}"
 
-jobs:
   comment:
     runs-on: ubuntu-latest
     steps:
