@@ -10,6 +10,8 @@ jobs:
     runs-on: ubuntu-latest
     env:
       BODY: ${{ toJson(github.event.issue.body) }}
+    outputs:
+      variable-value: ${{ steps.get-value.outputs.variable-value }}
     steps:
       - name: Check out scripts
         uses: actions/checkout@v3
@@ -37,12 +39,24 @@ jobs:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           branch: ${{ github.ref }}
 
-      # - name: Add comment
-      #   uses: peter-evans/create-or-update-comment@5f728c3dae25f329afbe34ee4d08eef25569d79f
-      #   with:
-      #     issue-number: ${{ github.event.issue.number }}
-      #     body: |
-      #       ${{ toJson(github.event.issue.body) }}
+      - name: Read data from JS file
+        uses: actions/github-script@v6
+        with:
+          script: |
+            const variableValue = require('./script.js').json;
+            console.log('Variable value:', variableValue);
+            
+            // Set output variable for later use
+            if (variableValue !== undefined) {
+              process.stdout.write(`::set-output name=variable-value::${variableValue}`);
+            }
+
+      - name: Add comment
+        uses: peter-evans/create-or-update-comment@5f728c3dae25f329afbe34ee4d08eef25569d79f
+        with:
+          issue-number: ${{ github.event.issue.number }}
+          body: |
+            ${{ variable-value }}
 
       # - name: Add label
       #   uses: actions/github-script@v6
@@ -54,10 +68,3 @@ jobs:
       #         repo: context.repo.repo,
       #         labels: ['automate']
       #       })
-
-      - name: Read data from JS file
-        uses: actions/github-script@v6
-        with:
-          script: |
-            const variableValue = require('./script.js').json;
-            console.log('Variable value:', variableValue);
