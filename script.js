@@ -1,5 +1,11 @@
 const fs = require('fs');
 const path = require('path');
+const octokit = new getOctokit( token );
+
+const { payload } = context;
+const { issue: { number }, repository: { owner, issuename } } = payload;
+console.log('issuename', number, issuename);
+
 
 const data = process.env.BODY.replaceAll('"', "");
 const lines = data.split("\\n\\n");
