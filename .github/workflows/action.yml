@@ -48,7 +48,7 @@ jobs:
             
             // Set output variable for later use
             if (variableValue !== undefined) {
-              process.stdout.write("{navariable-valueme}={variableValue}" >> $GITHUB_OUTPUT);
+              process.stdout.write("{variable-value}={variableValue}" >> $GITHUB_OUTPUT);
             }
 
       - name: Add comment
