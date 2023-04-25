@@ -22,6 +22,11 @@ const json = {
 
 console.log("***************", json)
 
+const github = json;
+module.exports = ({github, context}) => {
+    return context.payload.client_payload.value
+  }
+
 const filePath = path.join(__dirname, 'files', domainName + '.json');
 fs.writeFileSync(filePath, JSON.stringify(json, null, 2), err => {
     if (err) throw err;
