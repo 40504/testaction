@@ -56,7 +56,7 @@ jobs:
         with:
           issue-number: ${{ github.event.issue.number }}
           body: |
-            ${{ variable-value }}
+            ${{ needs.create-json-from-issue.outputs.variable-value }}"
 
       # - name: Add label
       #   uses: actions/github-script@v6
