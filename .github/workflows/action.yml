@@ -37,19 +37,26 @@ jobs:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           branch: ${{ github.ref }}
 
-      - name: get-value
-        uses: actions/github-script@v6
-        with:
-          script: |
-            const script = require('./script.js')
-            console.log(script({github, context}))
-
       - name: Add comment
         uses: peter-evans/create-or-update-comment@5f728c3dae25f329afbe34ee4d08eef25569d79f
         with:
           issue-number: ${{ github.event.issue.number }}
           body: |
             ${{ needs.create-json-from-issue.outputs.variable-value }}"
+
+jobs:
+  comment:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/github-script@v6
+        with:
+          script: |
+            github.rest.issues.createComment({
+              issue_number: context.issue.number,
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              body: '👋 Thanks for reporting!'
+            })
 
       # - name: Add label
       #   uses: actions/github-script@v6
