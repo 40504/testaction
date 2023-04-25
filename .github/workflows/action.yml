@@ -50,12 +50,10 @@ jobs:
       - uses: actions/github-script@v6
         with:
           script: |
-            github.rest.issues.createComment({
-              issue_number: context.issue.number,
-              owner: context.repo.owner,
-              repo: context.repo.repo,
-              body: '👋 Thanks for reporting!'
-            })
+            const filePath = path.join(process.env.GITHUB_WORKSPACE, './script.js');
+            const fileData = fs.readFileSync(filePath, 'utf-8');
+
+            console.log('File data:', fileData);
 
       # - name: Add label
       #   uses: actions/github-script@v6

@@ -1,17 +1,6 @@
 const fs = require('fs');
 const path = require('path');
 
-const { payload } = context;
-const { issue: { number }, repository: { owner, issuename } } = payload;
-console.log('issuename', number, issuename);
-
-const token = getInput( 'github_token' );
-if ( ! token ) {
-	setFailed( 'Input `github_token` is required' );
-	return;
-}
-
-
 const data = process.env.BODY.replaceAll('"', "");
 const lines = data.split("\\n\\n");
 
