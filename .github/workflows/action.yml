@@ -42,7 +42,7 @@ jobs:
         with:
           issue-number: ${{ github.event.issue.number }}
           body: |
-            ${{ github.event.issue.number }}
+            #${{ github.event.issue.number }}
 
   comment:
     runs-on: ubuntu-latest
@@ -50,13 +50,8 @@ jobs:
       - uses: actions/github-script@v6
         with:
           script: |
-            const fs = require('fs');
-            const path = require('path');
-
-            const filePath = path.join(process.env.GITHUB_WORKSPACE, script.js);
-            const fileData = fs.readFileSync(filePath, 'utf-8');
-
-            console.log('File data:', fileData);
+            const variableValue = require('./script.js').json;
+            console.log('Variable value:', variableValue);
 
       # - name: Add label
       #   uses: actions/github-script@v6
