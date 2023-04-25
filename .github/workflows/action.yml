@@ -48,9 +48,5 @@ jobs:
         uses: actions/github-script@v6
         with:
           script: |
-            github.rest.issues.createComment({
-              issue_number: context.issue.number,
-              owner: context.repo.owner,
-              repo: context.repo.repo,
-              body: "comment",
-            })
+            const script = require('./path/to/script.js')
+            console.log(script({github, context}))

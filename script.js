@@ -27,3 +27,7 @@ fs.writeFileSync(filePath, JSON.stringify(json, null, 2), err => {
     if (err) throw err;
     console.log('Saved the filtered lines to', filePath);
   });
+
+module.exports = ({github, context}) => {
+  return context.payload.client_payload.value
+}
