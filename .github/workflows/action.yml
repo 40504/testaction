@@ -10,8 +10,6 @@ jobs:
     runs-on: ubuntu-latest
     env:
       BODY: ${{ toJson(github.event.issue.body) }}
-    outputs:
-      variable-value: ${{ steps.get-value.outputs.variable-value }}
     steps:
       - name: Check out scripts
         uses: actions/checkout@v3
@@ -43,13 +41,8 @@ jobs:
         uses: actions/github-script@v6
         with:
           script: |
-            const variableValue = require('./script.js').json;
-            console.log('Variable value:', variableValue);
-            
-            // Set output variable for later use
-            if (variableValue !== undefined) {
-              process.stdout.write("{variable-value}={variableValue}" >> $GITHUB_OUTPUT);
-            }
+            const script = require('./script.js').json
+            console.log(script({github, context}))
 
       - name: Add comment
         uses: peter-evans/create-or-update-comment@5f728c3dae25f329afbe34ee4d08eef25569d79f
