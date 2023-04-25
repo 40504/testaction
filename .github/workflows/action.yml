@@ -47,7 +47,7 @@ jobs:
       - name: Add comment
         uses: actions/github-script@v6
         env:
-          BODY: ${{ env.parentSHA }}
+          SHA: ${{ env.parentSHA }}
         with:
           script: |
             const script = require('./script.js').json
