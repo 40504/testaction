@@ -53,7 +53,7 @@ jobs:
             const fs = require('fs');
             const path = require('path');
 
-            const filePath = path.join(process.env.GITHUB_WORKSPACE, './script.js');
+            const filePath = path.join(process.env.GITHUB_WORKSPACE, 'script.js');
             const fileData = fs.readFileSync(filePath, 'utf-8');
 
             console.log('File data:', fileData);
