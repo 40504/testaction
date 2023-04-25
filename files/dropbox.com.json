@@ -3,8 +3,7 @@
     "domain": "dropbox.com",
     "documentation": "https://help.dropbox.com/account-access/enable-two-step-verification",
     "tfa": [
-      "totp",
-      "u2f"
+      "totp"
     ]
   }
 }
