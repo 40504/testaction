@@ -28,6 +28,12 @@ fs.writeFileSync(filePath, JSON.stringify(json, null, 2), err => {
     console.log('Saved the filtered lines to', filePath);
   });
 
-module.exports = ({github, context}) => {
-  return context.payload.client_payload.value
-}
+  module.exports = async ({github, context, core}) => {
+    const {SHA} = process.env
+    const commit = await github.rest.repos.getCommit({
+      owner: context.repo.owner,
+      repo: context.repo.repo,
+      ref: `${SHA}`
+    })
+    core.exportVariable('author', commit.data.commit.author.email)
+  }
