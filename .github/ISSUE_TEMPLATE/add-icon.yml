@@ -33,7 +33,8 @@ body:
     attributes:
       label: Recovery
       description: Link to documentation on how to recover access on the site.
-      placeholder: ex. https://help.dropbox.com/recovery/
+      # placeholder: ex. https://help.dropbox.com/recovery/
+      value: https://help.dropbox.com/recovery
   - type: checkboxes
     id: 2fa_method
     attributes:
