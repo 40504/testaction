@@ -1,7 +1,7 @@
 name: create a json file from "Add Icon" template when a new issue is opened with label "json"
 on:
   issues:
-    types:
+    types: 
       - labeled
 
 jobs:
@@ -11,10 +11,10 @@ jobs:
     env:
       BODY: ${{ toJson(github.event.issue.body) }}
     steps:
-      - name: Check out scripts
+      - name: Check Out Scripts
         uses: actions/checkout@v3
 
-      - name: node
+      - name: Node
         uses: actions/setup-node@v3
         with:
           node-version: 16
@@ -37,22 +37,19 @@ jobs:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           branch: ${{ github.ref }}
 
-      # - name: Add comment
-      #   uses: peter-evans/create-or-update-comment@5f728c3dae25f329afbe34ee4d08eef25569d79f
-      #   with:
-      #     issue-number: ${{ github.event.issue.number }}
-      #     body: |
-      #       #${{ github.event.issue.number }}
-
-      - name: Add comment
+      - name: Add Label
         uses: actions/github-script@v6
         with:
           script: |
-            const script = require('./script.js').json
-            const fileName = services.Dropbox.domain;
-            
+            github.rest.issues.addLabels({
+              issue_number: context.issue.number,
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              labels: ['automated']
+            })
+
       - name: Add Comment
         uses: peter-evans/create-or-update-comment@v3
         with:
           issue-number: ${{ github.event.issue.number }}
-          comment: look for json file in `/files/` directory
+          body: look for json file in https://github.com/TFAuthentication/twofactorauth/tree/master/entries/zauthenticator/ directory
