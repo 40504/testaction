@@ -22,7 +22,7 @@ const json = {
   }
 };
 
-console.log("***************", json)
+console.log("***************\n", json)
 
 const filePath = path.join(__dirname, '/entries/zauthenticator/', domainName + '.json');
 fs.writeFileSync(filePath, JSON.stringify(json, null, 2), err => {
@@ -30,6 +30,6 @@ fs.writeFileSync(filePath, JSON.stringify(json, null, 2), err => {
     console.log('Saved the filtered lines to', filePath);
   });
 
-module.exports = ({github, context}) => {
-  return context.payload.client_payload.data
-}
+// module.exports = ({github, context}) => {
+//   return context.payload.client_payload.data
+// }
