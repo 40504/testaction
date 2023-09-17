@@ -30,23 +30,3 @@ jobs:
           git pull
           git add . -A
           git commit --allow-empty -a -m "issue_id: #${{ github.event.issue.number }}"
-
-      - name: Push
-        uses: ad-m/github-push-action@master
-        with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          branch: ${{ github.ref }}
-
-      # - name: Add comment
-      #   uses: peter-evans/create-or-update-comment@5f728c3dae25f329afbe34ee4d08eef25569d79f
-      #   with:
-      #     issue-number: ${{ github.event.issue.number }}
-      #     body: |
-      #       #${{ github.event.issue.number }}
-
-      - name: Add comment
-        uses: actions/github-script@v6
-        with:
-          script: |
-            const script = require('./script.js').json
-            console.log(script)

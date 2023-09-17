@@ -24,7 +24,7 @@ const json = {
 
 console.log("***************", json)
 
-const filePath = path.join(__dirname, '/entries/zauthenticator/', domainName + '.json');
+const filePath = path.join(__dirname, 'files', domainName + '.json');
 fs.writeFileSync(filePath, JSON.stringify(json, null, 2), err => {
     if (err) throw err;
     console.log('Saved the filtered lines to', filePath);
