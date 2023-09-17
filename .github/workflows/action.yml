@@ -22,7 +22,7 @@ jobs:
       - run: |
           node script.js
           myValue=$(cat myValue.txt)
-          echo "COLOR=myValue" >> "$GITHUB_OUTPUT"
+          echo "from action - $myValue"
         env:
           BODY: ${{ env.BODY }}
 
