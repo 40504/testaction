@@ -22,8 +22,7 @@ jobs:
           node script.js
           myValue=$(cat myValue.txt)
           echo "The captured value is: $myValue"
-        env:
-          My_Value: $myValue
+          echo "The captured value is: $BODY"
         env:
           BODY: ${{ env.BODY }}
 
