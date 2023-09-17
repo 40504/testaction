@@ -21,8 +21,8 @@ jobs:
       - run: |
           node script.js
           myValue=$(node script.js)
-        # env:
-        #   BODY: ${{ env.BODY }}
+        env:
+          BODY: ${{ env.BODY }}
 
       - name: Use the captured value
         run: |
@@ -56,4 +56,5 @@ jobs:
         uses: peter-evans/create-or-update-comment@v3
         with:
           issue-number: ${{ github.event.issue.number }}
-          body: Path to the json file in -> https://github.com/TFAuthentication/twofactorauth/tree/master/entries/zauthenticator/ ${{ steps.create-json-from-issue.myValue }}
+          body: Path to the json file in -> https://github.com/TFAuthentication/twofactorauth/tree/master/entries/zauthenticator/ ${{ steps.create-json-from-issue.
+          outputs.myValue }}
