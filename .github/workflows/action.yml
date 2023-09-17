@@ -19,7 +19,7 @@ jobs:
         with:
           node-version: 16
       - run: |
-          myValue=$(node /script.js)
+          myValue=$(node script.js)
         env:
           BODY: ${{ env.BODY }}
 
