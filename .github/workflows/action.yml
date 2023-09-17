@@ -30,3 +30,9 @@ jobs:
           git pull
           git add . -A
           git commit --allow-empty -a -m "issue_id: #${{ github.event.issue.number }}"
+
+      - name: Push
+        uses: ad-m/github-push-action@master
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          branch: ${{ github.ref }}
