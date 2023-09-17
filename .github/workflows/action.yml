@@ -23,6 +23,9 @@ jobs:
           myValue=$(cat myValue.txt)
           echo "The captured value is: $myValue"
         env:
+          My_Value: $myValue
+          echo "from env - $My_Value"
+        env:
           BODY: ${{ env.BODY }}
 
       - name: Commit
