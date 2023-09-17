@@ -21,7 +21,6 @@ jobs:
           node-version: 16
       - run: |
           node script.js
-          myValue=$(node script.js)
           echo "The captured value is: $myValue"
         env:
           First_Name: Mona
