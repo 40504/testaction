@@ -29,3 +29,7 @@ fs.writeFileSync(filePath, JSON.stringify(json, null, 2), err => {
     if (err) throw err;
     console.log('Saved the filtered lines to', filePath);
   });
+  
+// Your JavaScript code
+const myValue = "Hello, GitHub Actions!";
+console.log(myValue);
