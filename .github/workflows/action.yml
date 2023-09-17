@@ -27,10 +27,11 @@ jobs:
         id: domain-name
         run: |
           myValue=$(cat myValue.txt)
-      - name: get domain name
-        env:
-          MY_VALUE: ${{ steps.domain-name.outputs.MY_VALUE }}
-        run: echo "The domain name is $MY_VALUE"
+          echo "MY_VALUE=$myValue" >> "$GITHUB_OUTPUT"
+      # - name: get domain name
+      #   env:
+      #     MY_VALUE: ${{ steps.domain-name.outputs.MY_VALUE }}
+      #   run: echo "The domain name is $MY_VALUE"
 
       - name: Commit
         run: |
