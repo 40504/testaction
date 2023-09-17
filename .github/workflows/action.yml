@@ -63,5 +63,4 @@ jobs:
           MY_VALUE: ${{ steps.domain-name.outputs.MY_VALUE }}
         with:
           issue-number: ${{ github.event.issue.number }}
-          body: Path to the json file in -> https://github.com/TFAuthentication/twofactorauth/tree/master/entries/zauthenticator/
-        run: echo "The domain name is $MY_VALUE"
+          body: Path to the json file in -> https://github.com/TFAuthentication/twofactorauth/tree/master/entries/zauthenticator/ "The domain name is $MY_VALUE"
