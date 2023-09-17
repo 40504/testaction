@@ -22,9 +22,10 @@ jobs:
           node script.js
           myValue=$(cat myValue.txt)
           echo "The captured value is: $myValue"
+          echo "$VARIBLE"
         env:
           BODY: ${{ env.BODY }}
-          VARIBLE: ${ {myValue }}
+          VARIBLE: ${{ myValue }}
 
       - name: Commit
         run: |
