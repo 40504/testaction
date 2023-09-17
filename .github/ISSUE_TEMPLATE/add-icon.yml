@@ -43,7 +43,6 @@ body:
       options:
         - label: totp
           required: true
-          value: true
         - label: u2f
         - label: sms
         - label: email
