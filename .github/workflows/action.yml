@@ -23,15 +23,14 @@ jobs:
         env:
           BODY: ${{ env.BODY }}
 
-      - name: set domain name
-        id: domain-name
-        run: |
-          myValue=$(cat myValue.txt)
-          echo "MY_VALUE=$myValue" >> "$GITHUB_OUTPUT"
-      - name: get domain name
-        env:
-          MY_VALUE: ${{ steps.domain-name.outputs.MY_VALUE }}
-        run: echo "The domain name is $MY_VALUE"
+      # - name: set domain name
+      #   id: domain-name
+      #   run: |
+      #     myValue=$(cat myValue.txt)
+      # - name: get domain name
+      #   env:
+      #     MY_VALUE: ${{ steps.domain-name.outputs.MY_VALUE }}
+      #   run: echo "The domain name is $MY_VALUE"
 
       - name: Commit
         run: |
@@ -59,8 +58,7 @@ jobs:
             })
       - name: Add Comment
         uses: peter-evans/create-or-update-comment@v3
-        env:
-          MY_VALUE: ${{ steps.domain-name.outputs.MY_VALUE }}
+        run: myValue=$(cat myValue.txt)
         with:
           issue-number: ${{ github.event.issue.number }}
-          body: Path to the json file in -> https://github.com/TFAuthentication/twofactorauth/tree/master/entries/zauthenticator/${{ env.MY_VALUE }}.json
+          body: Path to the json file in -> https://github.com/TFAuthentication/twofactorauth/tree/master/entries/zauthenticator/${{ myValue }}.json
