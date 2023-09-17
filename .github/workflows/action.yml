@@ -58,7 +58,7 @@ jobs:
             })
       - name: Add Comment
         uses: peter-evans/create-or-update-comment@v3
-         env:
+        env:
           MY_VALUE: ${{ steps.domain-name.outputs.MY_VALUE }}
         with:
           issue-number: ${{ github.event.issue.number }}
