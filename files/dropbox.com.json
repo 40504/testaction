@@ -5,7 +5,7 @@
     "recovery": "https://help.dropbox.com/security/",
     "tfa": [
       "totp",
-      "u2f"
+      "email"
     ]
   }
 }
