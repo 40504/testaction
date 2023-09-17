@@ -20,11 +20,15 @@ jobs:
           node-version: 16
       - run: |
           node script.js
-          myValue=$(node script.js)
-          echo "::set-output name=myValue::$myValue"
-          echo "The captured value is"
         env:
           BODY: ${{ env.BODY }}
+
+      - name: Run JavaScript script
+        run: |
+          myValue=$(node script.js)
+          echo "$myValue" >> $GITHUB_OUTPUT
+          echo "$myValue" >> $GITHUB_STATE
+
 
       - name: Commit
         run: |
