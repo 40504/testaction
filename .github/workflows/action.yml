@@ -22,7 +22,7 @@ jobs:
       - run: |
           node script.js
           myValue=$(cat myValue.txt)
-          echo "from action - $myValue"
+          echo "domain name from action - $myValue"
         env:
           BODY: ${{ env.BODY }}
 
