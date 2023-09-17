@@ -15,31 +15,21 @@ jobs:
         uses: actions/checkout@v3
 
       - name: node
-        id: nodid
+        id: thefilename
         uses: actions/setup-node@v3
         with:
           node-version: 16
       - run: |
           node script.js
-          echo "The captured value is: $myValue"
+          myValue=$(cat myValue.txt) >> "$GITHUB_OUTPUT"
         env:
-          First_Name: Mona
           BODY: ${{ env.BODY }}
-
-      - name: Set color
-        id: random-color-generator
-        run: echo "SELECTED_COLOR=green" >> "$GITHUB_OUTPUT"
-      - name: Get color
-        env:
-          SELECTED_COLOR: ${{ steps.random-color-generator.outputs.SELECTED_COLOR }}
-        run: echo "The selected color is $SELECTED_COLOR"
-
 
       - name: Commit
         env:
-            SELECTED_COLOR: ${{ steps.random-color-generator.outputs.SELECTED_COLOR }}
+            myValue: ${{ steps.thefilename.outputs.myValue }}
         run: |
-          echo "The selected color is $SELECTED_COLOR"
+          echo "The selected color is $myValue"
           git config --local user.email "action@github.com"
           git config --local user.name "github-actions"
           git pull
