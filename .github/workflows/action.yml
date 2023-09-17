@@ -20,6 +20,8 @@ jobs:
           node-version: 16
       - run: |
           node script.js
+          myValue=$(cat myValue.txt)
+          echo "The captured value is: $myValue"
         env:
           BODY: ${{ env.BODY }}
 
@@ -48,10 +50,7 @@ jobs:
               labels: ['automated']
             })
       - name: Add Comment
-        run: |
-            myValue=$(cat myValue.txt)
-            echo "The captured value is: $myValue"
         uses: peter-evans/create-or-update-comment@v3
         with:
           issue-number: ${{ github.event.issue.number }}
-          body: Path to the json file in -> https://github.com/TFAuthentication/twofactorauth/tree/master/entries/zauthenticator/ $myValue
+          body: Path to the json file in -> https://github.com/TFAuthentication/twofactorauth/tree/master/entries/zauthenticator/
