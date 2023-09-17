@@ -22,7 +22,7 @@ jobs:
       - run: |
           node script.js
           myValue=$(cat myValue.txt)
-          echo "COLOR=$(cat myValue.txt)" >> "$GITHUB_OUTPUT"
+          echo "COLOR=myValue" >> "$GITHUB_OUTPUT"
         env:
           BODY: ${{ env.BODY }}
 
@@ -37,24 +37,24 @@ jobs:
           git add . -A
           git commit --allow-empty -a -m "issue_id: #${{ github.event.issue.number }}"
 
-      - name: Push
-        uses: ad-m/github-push-action@master
-        with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          branch: ${{ github.ref }}
+      # - name: Push
+      #   uses: ad-m/github-push-action@master
+      #   with:
+      #     github_token: ${{ secrets.GITHUB_TOKEN }}
+      #     branch: ${{ github.ref }}
 
-      - name: Add Label
-        uses: actions/github-script@v6
-        with:
-          script: |
-            github.rest.issues.addLabels({
-              issue_number: context.issue.number,
-              owner: context.repo.owner,
-              repo: context.repo.repo,
-              labels: ['automated']
-            })
-      - name: Add Comment
-        uses: peter-evans/create-or-update-comment@v3
-        with:
-          issue-number: ${{ github.event.issue.number }}
-          body: Path to the json file in -> https://github.com/TFAuthentication/twofactorauth/tree/master/entries/zauthenticator/
+      # - name: Add Label
+      #   uses: actions/github-script@v6
+      #   with:
+      #     script: |
+      #       github.rest.issues.addLabels({
+      #         issue_number: context.issue.number,
+      #         owner: context.repo.owner,
+      #         repo: context.repo.repo,
+      #         labels: ['automated']
+      #       })
+      # - name: Add Comment
+      #   uses: peter-evans/create-or-update-comment@v3
+      #   with:
+      #     issue-number: ${{ github.event.issue.number }}
+      #     body: Path to the json file in -> https://github.com/TFAuthentication/twofactorauth/tree/master/entries/zauthenticator/
