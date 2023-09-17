@@ -20,7 +20,7 @@ jobs:
           node-version: 16
       - run: |
           node script.js
-          myValue=$(cat myValue.txt)
+          myValue=$(node script.js)
           echo "The captured value is: $myValue"
         env:
           First_Name: Mona
@@ -28,7 +28,7 @@ jobs:
 
       - name: Commit
         run: |
-          echo "test---- ${{ env.First_Name }}"  
+          echo "The captured value is: ${{ steps.create-json-from-issue.outputs.myValue }}"
           git config --local user.email "action@github.com"
           git config --local user.name "github-actions"
           git pull
