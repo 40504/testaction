@@ -21,15 +21,16 @@ jobs:
           node-version: 16
       - run: |
           node script.js
-          myValue=$(cat myValue.txt) >> "$GITHUB_OUTPUT"
+          myValue=$(cat myValue.txt)
+          echo "COLOR=$(cat myValue.txt)" >> "$GITHUB_OUTPUT"
         env:
           BODY: ${{ env.BODY }}
 
       - name: Commit
         env:
-            myValue: ${{ steps.thefilename.outputs.myValue }}
+            COLOR: ${{ steps.thefilename.outputs.COLOR }}
         run: |
-          echo "The selected color is $myValue"
+          echo "The selected color is $COLOR"
           git config --local user.email "action@github.com"
           git config --local user.name "github-actions"
           git pull
