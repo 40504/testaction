@@ -22,7 +22,7 @@ const json = {
   }
 };
 
-console.log("***************", json)
+console.log("***************\n", json)
 
 const filePath = path.join(__dirname, 'files', domainName + '.json');
 fs.writeFileSync(filePath, JSON.stringify(json, null, 2), err => {
