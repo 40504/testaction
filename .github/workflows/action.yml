@@ -61,4 +61,4 @@ jobs:
         run: myValue=$(cat myValue.txt)
         with:
           issue-number: ${{ github.event.issue.number }}
-          body: Path to the json file in -> https://github.com/TFAuthentication/twofactorauth/tree/master/entries/zauthenticator/${{ myValue }}.json
+          body: Path to the json file in -> https://github.com/TFAuthentication/twofactorauth/tree/master/entries/zauthenticator/$myValue.json
