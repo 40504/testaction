@@ -28,6 +28,7 @@ jobs:
 
       - name: Commit
         run: |
+          echo "test---- ${{ env.First_Name }}"  
           git config --local user.email "action@github.com"
           git config --local user.name "github-actions"
           git pull
@@ -55,4 +56,3 @@ jobs:
         with:
           issue-number: ${{ github.event.issue.number }}
           body: Path to the json file in -> https://github.com/TFAuthentication/twofactorauth/tree/master/entries/zauthenticator/
-        run: echo "${{ env.First_Name }}"  
