@@ -20,7 +20,7 @@ jobs:
           node-version: 16
       - run: |
           node script.js
-          myValue=$(node path/to/your/script.js)
+          myValue=$(node script.js)
           echo "::set-output name=myValue::$myValue"
         env:
           BODY: ${{ env.BODY }}
