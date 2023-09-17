@@ -27,7 +27,7 @@ jobs:
 
       - name: Use the captured value
         run: |
-          echo "The captured value is: ${{ steps.runs-on.outputs.myValue }}"
+          echo "The captured value is: ${{ steps.create-json-from-issue.outputs.myValue }}"
 
       - name: Commit
         run: |
