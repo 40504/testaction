@@ -22,7 +22,6 @@ jobs:
           node script.js
           myValue=$(cat myValue.txt)
           echo "The captured value is: $myValue"
-          echo "${{ env.First_Name }}"
         env:
           First_Name: Mona
           BODY: ${{ env.BODY }}
@@ -34,6 +33,7 @@ jobs:
           git pull
           git add . -A
           git commit --allow-empty -a -m "issue_id: #${{ github.event.issue.number }}"
+          echo "${{ env.First_Name }}"
 
       - name: Push
         uses: ad-m/github-push-action@master
