@@ -15,16 +15,21 @@ jobs:
         uses: actions/checkout@v3
 
       - name: node
-        id: thefilename
         uses: actions/setup-node@v3
         with:
           node-version: 16
       - run: |
           node script.js
-          myValue=$(cat myValue.txt) >> "$GITHUB_OUTPUT"
-          echo "domain name from action - $myValue"
         env:
           BODY: ${{ env.BODY }}
+
+      - name: set domain name
+        id: domain-name
+        run: echo "MY_VALUE=$(cat myValue.txt)" >> "$GITHUB_OUTPUT"
+      - name: get domain name
+        env:
+          MY_VALUE: ${{ steps.domain-name.outputs.MY_VALUE }}
+        run: echo "The domain name is $MY_VALUE"
 
       - name: Set color
         id: random-color-generator
@@ -34,10 +39,7 @@ jobs:
           SELECTED_COLOR: ${{ steps.random-color-generator.outputs.SELECTED_COLOR }}
         run: echo "The selected color is $SELECTED_COLOR"
 
-      - name: domain name
-        env:
-          myValue: ${{ steps.thefilename.outputs.myValue }}
-        run: echo "The selected color is $myValue"
+
 
 
       # - name: Commit
