@@ -33,5 +33,3 @@ fs.writeFileSync(filePath, JSON.stringify(json, null, 2), err => {
 // Your JavaScript code
 const myValue = "Hello, GitHub Actions!";
 console.log(myValue);
-console.log(`::set-output name=myValue::${myValue}`);
-console.log(`::save-state name=myValue::${myValue}`);
