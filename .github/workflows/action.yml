@@ -21,12 +21,13 @@ jobs:
       - run: |
           node script.js
           myValue=$(node script.js)
+          echo "$myValue" >> $GITHUB_STATE
         env:
           BODY: ${{ env.BODY }}
 
       - name: Use the captured value
         run: |
-          echo "The captured value is: ${{ myValue }}"
+          echo "The captured value is: ${{ steps.create-json-from-issue.outputs.myValue }}"
 
       - name: Commit
         run: |
