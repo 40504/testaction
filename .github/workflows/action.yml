@@ -25,7 +25,9 @@ jobs:
 
       - name: set domain name
         id: domain-name
-        run: echo "MY_VALUE=$(cat myValue.txt)" >> "$GITHUB_OUTPUT"
+        run: |
+          myValue=$(cat myValue.txt)"
+          echo "MY_VALUE=$myValue" >> "$GITHUB_OUTPUT"
       - name: get domain name
         env:
           MY_VALUE: ${{ steps.domain-name.outputs.MY_VALUE }}
@@ -38,9 +40,6 @@ jobs:
         env:
           SELECTED_COLOR: ${{ steps.random-color-generator.outputs.SELECTED_COLOR }}
         run: echo "The selected color is $SELECTED_COLOR"
-
-
-
 
       # - name: Commit
       #   run: |
