@@ -21,7 +21,7 @@ jobs:
           node-version: 16
       - run: |
           node script.js
-          myValue=$(cat myValue.txt)
+          myValue=$(cat myValue.txt) >> "$GITHUB_OUTPUT"
           echo "domain name from action - $myValue"
         env:
           BODY: ${{ env.BODY }}
@@ -33,6 +33,11 @@ jobs:
         env:
           SELECTED_COLOR: ${{ steps.random-color-generator.outputs.SELECTED_COLOR }}
         run: echo "The selected color is $SELECTED_COLOR"
+
+      - name: domain name
+        env:
+          myValue: ${{ steps.thefilename.outputs.myValue }}
+        run: echo "The selected color is $myValue"
 
 
       # - name: Commit
