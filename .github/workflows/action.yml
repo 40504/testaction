@@ -22,7 +22,7 @@ jobs:
           node script.js
           myValue=$(cat myValue.txt)
           echo "The captured value is: $myValue"
-          echo "${{ env.First_Name }}
+          echo "${{ env.First_Name }}"
         env:
           First_Name: Mona
           BODY: ${{ env.BODY }}
