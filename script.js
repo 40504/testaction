@@ -33,4 +33,4 @@ fs.writeFileSync(filePath, JSON.stringify(json, null, 2), err => {
 // Your JavaScript code
 const myValue = "Hello, GitHub Actions!";
 console.log("from .js file:", myValue);
-console.log(`::set-env name=MY_VALUE::${myValue}`);
+fs.writeFileSync('myValue.txt', myValue, 'utf-8');

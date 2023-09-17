@@ -20,13 +20,14 @@ jobs:
           node-version: 16
       - run: |
           node script.js
-          myValue=$(node script.js)
+          myValue=$(cat myValue.txt)
+          echo "The captured value is: $myValue"
         env:
           BODY: ${{ env.BODY }}
 
       - name: Use the captured value
         run: |
-          echo "The captured value is: ${{ steps.create-json-from-issue.outputs.myValue }}"
+           echo "The captured value is: $myValue"
 
       - name: Commit
         run: |
