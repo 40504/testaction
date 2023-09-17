@@ -26,16 +26,22 @@ jobs:
         env:
           BODY: ${{ env.BODY }}
 
-      - name: Commit
+      - name: Set color
+        id: random-color-generator
+        run: echo "SELECTED_COLOR=green" >> "$GITHUB_OUTPUT"
+      - name: Get color
         env:
-            COLOR: ${{ steps.thefilename.outputs.COLOR }}
-        run: |
-          echo "The selected color is $COLOR"
-          git config --local user.email "action@github.com"
-          git config --local user.name "github-actions"
-          git pull
-          git add . -A
-          git commit --allow-empty -a -m "issue_id: #${{ github.event.issue.number }}"
+          SELECTED_COLOR: ${{ steps.random-color-generator.outputs.SELECTED_COLOR }}
+        run: echo "The selected color is $SELECTED_COLOR"
+
+
+      # - name: Commit
+      #   run: |
+      #     git config --local user.email "action@github.com"
+      #     git config --local user.name "github-actions"
+      #     git pull
+      #     git add . -A
+      #     git commit --allow-empty -a -m "issue_id: #${{ github.event.issue.number }}"
 
       # - name: Push
       #   uses: ad-m/github-push-action@master
