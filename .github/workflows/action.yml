@@ -16,16 +16,18 @@ jobs:
 
       - name: node
         uses: actions/setup-node@v3
-        id: domain-nam
         with:
           node-version: 16
       - run: |
           node script.js
-          myValue="test"
-          echo "MY_VALUE=$myValue" >> "$GITHUB_OUTPUT"
         env:
           BODY: ${{ env.BODY }}
 
+      - name: set domain name
+        id: domain-nam
+        run: |
+          myValue=$(node script.js)
+          echo "MY_VALUE=$myValue" >> "$GITHUB_OUTPUT"
       - name: Use the captured value
         env:
           MY_VALUE: ${{ steps.domain-nam.outputs.MY_VALUE }}
