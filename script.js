@@ -35,6 +35,6 @@ fs.writeFileSync(filePath, JSON.stringify(json, null, 2), err => {
 // console.log("domain name from js - ", myValue);
 // fs.writeFileSync(myValue + '.txt', myValue, 'utf-8');
 
-return domainName;
+// return domainName;
 
-// const myValue = domainName;
+const myValue = domainName;
