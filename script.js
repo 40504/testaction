@@ -1,2 +1,2 @@
 const myValue = "Hello, GitHub Actions!";
-console.log(`"{NewName}=${myValue}" >> $GITHUB_OUTPUT`);
+console.log(`"{name}=${myValue}" >> $GITHUB_OUTPUT`);

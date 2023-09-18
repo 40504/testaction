@@ -21,4 +21,4 @@ jobs:
 
       - name: Use the captured value
         run: |
-          echo "The captured value is: ${{ steps.my-job.outputs.NewName }}"
+          echo "The captured value is: ${{ steps.my-job.outputs.name }}"
