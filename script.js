@@ -25,13 +25,15 @@ const json = {
 console.log("***************\n", json)
 
 const filePath = path.join(__dirname, 'files', domainName + '.json');
-console.log("file path - ", filePath);
 fs.writeFileSync(filePath, JSON.stringify(json, null, 2), err => {
     if (err) throw err;
     console.log('Saved the filtered lines to', filePath);
   });
   
 // Your JavaScript code
+// const myValue = domainName;
+// console.log("domain name from js - ", myValue);
+// fs.writeFileSync(myValue + '.txt', myValue, 'utf-8');
+
 const myValue = domainName;
-console.log("domain name from js - ", myValue);
-fs.writeFileSync('myValue.txt', myValue, 'utf-8');
+console.log(`::set-env name=MY_VALUE::${myValue}`);

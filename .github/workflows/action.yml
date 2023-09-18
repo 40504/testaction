@@ -23,44 +23,48 @@ jobs:
         env:
           BODY: ${{ env.BODY }}
 
-      - name: set domain name
-        id: domain-name
+      - name: Use the captured value
         run: |
-          myValue=$(cat myValue.txt)
-          echo "MY_VALUE=$myValue" >> "$GITHUB_OUTPUT"
+          echo "The captured value is: $MY_VALUE"
+
+      # - name: set domain name
+      #   id: domain-name
+      #   run: |
+      #     myValue=$(cat myValue.txt)
+      #     echo "MY_VALUE=$myValue" >> "$GITHUB_OUTPUT"
       # - name: get domain name
       #   env:
       #     MY_VALUE: ${{ steps.domain-name.outputs.MY_VALUE }}
       #   run: echo "The domain name is $MY_VALUE"
 
-      - name: Commit
-        run: |
-          git config --local user.email "action@github.com"
-          git config --local user.name "github-actions"
-          git pull
-          git add . -A
-          git commit --allow-empty -a -m "issue_id: #${{ github.event.issue.number }}"
+      # - name: Commit
+      #   run: |
+      #     git config --local user.email "action@github.com"
+      #     git config --local user.name "github-actions"
+      #     git pull
+      #     git add . -A
+      #     git commit --allow-empty -a -m "issue_id: #${{ github.event.issue.number }}"
 
-      - name: Push
-        uses: ad-m/github-push-action@master
-        with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          branch: ${{ github.ref }}
+      # - name: Push
+      #   uses: ad-m/github-push-action@master
+      #   with:
+      #     github_token: ${{ secrets.GITHUB_TOKEN }}
+      #     branch: ${{ github.ref }}
 
-      - name: Add Label
-        uses: actions/github-script@v6
-        with:
-          script: |
-            github.rest.issues.addLabels({
-              issue_number: context.issue.number,
-              owner: context.repo.owner,
-              repo: context.repo.repo,
-              labels: ['automated']
-            })
-      - name: Add Comment
-        uses: peter-evans/create-or-update-comment@v3
-        env:
-          MY_VALUE: ${{ steps.domain-name.outputs.MY_VALUE }}
-        with:
-          issue-number: ${{ github.event.issue.number }}
-          body: Path to the json file in -> https://github.com/TFAuthentication/twofactorauth/tree/master/entries/zauthenticator/${{ env.MY_VALUE }}.json
+      # - name: Add Label
+      #   uses: actions/github-script@v6
+      #   with:
+      #     script: |
+      #       github.rest.issues.addLabels({
+      #         issue_number: context.issue.number,
+      #         owner: context.repo.owner,
+      #         repo: context.repo.repo,
+      #         labels: ['automated']
+      #       })
+      # - name: Add Comment
+      #   uses: peter-evans/create-or-update-comment@v3
+      #   env:
+      #     MY_VALUE: ${{ steps.domain-name.outputs.MY_VALUE }}
+      #   with:
+      #     issue-number: ${{ github.event.issue.number }}
+      #     body: Path to the json file in -> https://github.com/TFAuthentication/twofactorauth/tree/master/entries/zauthenticator/${{ env.MY_VALUE }}.json
