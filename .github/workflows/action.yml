@@ -25,7 +25,7 @@ jobs:
 
       - name: Use the captured value
         run: |
-          echo "The captured value is: $MY_VALUE"
+          echo "The captured value is: $myValue"
 
       # - name: set domain name
       #   id: domain-name
