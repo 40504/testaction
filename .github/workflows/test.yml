@@ -1,4 +1,4 @@
-name: Create Comment on GitHub Issue
+name: My GitHub Actions Workflow
 
 on:
   push:
@@ -6,27 +6,17 @@ on:
       - master
 
 jobs:
-  create-comment:
+  my-job:
     runs-on: ubuntu-latest
 
-    strategy:
-      matrix:
-        node-version: [16.x]
-
     steps:
-      - name: Set up Node.js
-        uses: actions/setup-node@v2
-        with:
-          node-version: ${{ matrix.node-version }}
-
       - name: Checkout code
         uses: actions/checkout@v2
 
       - name: Run JavaScript script
         run: |
-          npm install axios
           node script.js
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          GITHUB_USERNAME: ${{ secrets.GITHUB_USERNAME }}
-          GITHUB_REPOSITORY: ${{ secrets.GITHUB_REPOSITORY}}
+
+      - name: Use the captured value
+        run: |
+          echo "The captured value is: ${{ steps.my-job.outputs.myValue }}"
