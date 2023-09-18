@@ -1,38 +1,22 @@
-const fs = require('fs');
-const path = require('path');
+const axios = require('axios');
 
-const data = process.env.BODY.replaceAll('"', "");
-const lines = data.split("\\n\\n");
+const githubToken = process.env.GITHUB_TOKEN;
+const owner = process.env.GITHUB_USERNAME;
+const repo = process.env.GITHUB_REPOSITORY;
+const issueNumber = 1; // Replace with the actual issue number
+const commentBody = 'This is a comment from a GitHub Actions workflow.';
 
-const name = lines[1];
-const domainName = lines[3];
-const documentationUrl = lines[5] !== "_No response_" ? lines[5] : null;
-const recoveryUrl = lines[7] !== "_No response_" ? lines[7] : null;
-const supported_2FA_methods = lines[9].split("\\n");
-const tfa_lines = supported_2FA_methods
-    .filter(line => line.startsWith('- [X]'))
-    .map(line => line.substring(6));
-
-const json = {
-  [name]: {
-    domain: domainName,
-    ...(documentationUrl && {documentation: documentationUrl}),
-    ...(recoveryUrl && {recovery: recoveryUrl}),
-    tfa: tfa_lines
+axios.post(`https://api.github.com/repos/${owner}/${repo}/issues/${issueNumber}/comments`, {
+  body: commentBody
+}, {
+  headers: {
+    Authorization: `Bearer ${githubToken}`,
+    'Content-Type': 'application/json'
   }
-};
-
-console.log("***************\n", json)
-
-const filePath = path.join(__dirname, 'files', domainName + '.json');
-fs.writeFileSync(filePath, JSON.stringify(json, null, 2), err => {
-    if (err) throw err;
-    console.log('Saved the filtered lines to', filePath);
-  });
-  
-// Your JavaScript code
-// const myValue = domainName;
-// console.log("domain name from js - ", myValue);
-// fs.writeFileSync(myValue + '.txt', myValue, 'utf-8');
-
-const myValue = domainName;
+})
+.then(response => {
+  console.log('Comment created successfully:', response.data);
+})
+.catch(error => {
+  console.error('Error creating comment:', error);
+});

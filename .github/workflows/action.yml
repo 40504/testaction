@@ -27,10 +27,11 @@ jobs:
         id: domain-nam
         run: |
           domainName=$(node script.js)
+          result-encoding: string
 
       - name: Use the captured value
         run: |
-          echo "test- ${{ steps.domain-nam.outputs.results }}"
+          echo "test- ${{ steps.domain-nam.outputs.MY_VALUE }}"
 
       # - name: set domain name
       #   id: domain-name
