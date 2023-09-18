@@ -16,6 +16,7 @@ jobs:
 
       - name: node
         uses: actions/setup-node@v3
+        id: domain-nam
         with:
           node-version: 16
       - run: |
@@ -25,8 +26,10 @@ jobs:
           BODY: ${{ env.BODY }}
 
       - name: Use the captured value
+        env:
+          MY_VALUE: ${{ steps.domain-nam.outputs.MY_VALUE }}
         run: |
-          echo "The captured value is: $myValue"
+          echo "The captured value is: $MY_VALUE"
 
       # - name: set domain name
       #   id: domain-name
