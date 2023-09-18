@@ -17,6 +17,8 @@ jobs:
         run: |
           node script.js
 
-      - name: Use the captured value
+      - name: Use the captured output
         run: |
-          echo "The captured value is: $name"
+          # Access the captured output from the environment file
+          captured_output=$(cat $GITHUB_OUTPUT)
+          echo "Captured output: $captured_output"
