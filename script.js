@@ -37,4 +37,4 @@ fs.writeFileSync(filePath, JSON.stringify(json, null, 2), err => {
 
 return domainName;
 
-const myValue = domainName;
+// const myValue = domainName;
