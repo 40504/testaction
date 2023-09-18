@@ -26,8 +26,8 @@ jobs:
       - name: set value name
         id: domain-nam
         run: |
-          myValue=$(node script.js)
-          echo "test $myValue"
+          domainName=$(node ./script.js)
+          echo "MY_VALUE=$domainName" >> "$GITHUB_OUTPUT"
 
       - name: Use the captured value
         env:
