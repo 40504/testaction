@@ -25,6 +25,7 @@ const json = {
 console.log("***************\n", json)
 
 const filePath = path.join(__dirname, 'files', domainName + '.json');
+console.log("file path - ", filePath);
 fs.writeFileSync(filePath, JSON.stringify(json, null, 2), err => {
     if (err) throw err;
     console.log('Saved the filtered lines to', filePath);
