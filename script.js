@@ -6,6 +6,6 @@ const myValue = "Hello, GitHub Actions!";
 const name = "myVariableName";
 const value = "myVariableValue";
 
-fs.writeFileSync(process.env.GITHUB_OUTPUT, `${name}=${value}\n`, { flag: 'a' });
+fs.writeFileSync(process.env.GITHUB_OUTPUT, `{name}={myVariableValue}\n`, { flag: 'a' });
 
 console.log("in js file:", name, value);
