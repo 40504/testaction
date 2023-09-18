@@ -7,3 +7,5 @@ const name = "myVariableName";
 const value = "myVariableValue";
 
 fs.writeFileSync(process.env.GITHUB_OUTPUT, `${name}=${value}\n`, { flag: 'a' });
+
+console.log("in js file:", name, value);
