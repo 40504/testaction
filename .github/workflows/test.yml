@@ -1,0 +1,25 @@
+name: Create Comment on GitHub Issue
+
+on:
+  push:
+    branches:
+      - master
+
+jobs:
+  create-comment:
+    runs-on: ubuntu-latest
+
+    env:
+      GITHUB_USERNAME: ${{ secrets.GITHUB_USERNAME }}
+      GITHUB_REPOSITORY: ${{ secrets.GITHUB_REPOSITORY }}
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Run JavaScript script
+        run: |
+          npm install axios
+          node script.js
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
