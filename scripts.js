@@ -33,7 +33,9 @@ fs.writeFileSync(filePath, JSON.stringify(json, null, 2), err => {
   
 
 const repository = process.env.GITHUB_REPOSITORY;
-const issueNumber = process.env.GITHUB_EVENT_NAME === 'issues' ? process.env.GITHUB_EVENT_ISSUE_NUMBER : null;
+const issuePayload = JSON.parse(process.env.BODY);
+const issueNumber = issuePayload.issue.number;
+
 console.log("issue number: ", issueNumber)
 
 const githubToken = process.env.GITHUB_TOKEN; // You need a GitHub token with appropriate permissions
