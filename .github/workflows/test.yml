@@ -15,11 +15,8 @@ jobs:
 
       - name: Run JavaScript script
         run: |
+          npm install dotenv
           node script.js
-
-      - name: Debug GITHUB_OUTPUT
-        run: |
-          cat $GITHUB_OUTPUT
 
       - name: Use the captured output
         run: |

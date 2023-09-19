@@ -1,2 +1,4 @@
 const myValue = "Hello, GitHub Actions!";
-console.log(`::set-env name=MY_VALUE::${myValue}`);
+const fs = require('fs');
+
+fs.writeFileSync('.env', `MY_VALUE=${myValue}`);
