@@ -16,22 +16,13 @@ jobs:
 
       - name: node
         uses: actions/setup-node@v3
-        with:
-          node-version: 16
       - run: |
-          node script.js
+          # Execute your JavaScript file here
+          node scripts.js
         env:
           BODY: ${{ env.BODY }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
-      - name: set value name
-        id: domain-nam
-        run: |
-          domainName=$(node script.js)
-          result-encoding: string
-
-      - name: Use the captured value
-        run: |
-          echo "test- ${{ steps.domain-nam.outputs.MY_VALUE }}"
 
       # - name: set domain name
       #   id: domain-name

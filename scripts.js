@@ -1,5 +1,6 @@
 const fs = require('fs');
 const path = require('path');
+const axios = require('axios');
 
 const data = process.env.BODY.replaceAll('"', "");
 const lines = data.split("\\n\\n");
@@ -30,9 +31,23 @@ fs.writeFileSync(filePath, JSON.stringify(json, null, 2), err => {
     console.log('Saved the filtered lines to', filePath);
   });
   
-// Your JavaScript code
-// const myValue = domainName;
-// console.log("domain name from js - ", myValue);
-// fs.writeFileSync(myValue + '.txt', myValue, 'utf-8');
 
-const myValue = domainName;
+const repository = process.env.GITHUB_REPOSITORY;
+const issueNumber = process.env.GITHUB_REF.split('/').pop();
+const githubToken = process.env.GITHUB_TOKEN; // You need a GitHub token with appropriate permissions
+const apiUrl = `https://api.github.com/repos/${repository}/issues/${issueNumber}/comments`;
+
+const comment = `JSON file created: [${filePath}](${filePath})`;
+
+axios.post(apiUrl, { body: comment }, {
+  headers: {
+    'Authorization': `Bearer ${githubToken}`,
+    'Content-Type': 'application/json',
+  },
+})
+.then(response => {
+  console.log(`Comment added to issue #${issueNumber}`);
+})
+.catch(error => {
+  console.error(`Error adding comment to issue #${issueNumber}: ${error.message}`);
+});
