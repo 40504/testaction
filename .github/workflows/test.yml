@@ -17,9 +17,10 @@ jobs:
         uses: actions/setup-node@v3
 
       - name: Run JavaScript script
+        id: myvalue
         run: |
-          npm install dotenv
-          node script.js
+          myvalue=$(node script.js)
+          echo "::set-output name=MY_VALUE::$myvalue"
 
       - name: Use the captured output
         run: |
