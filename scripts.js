@@ -5,7 +5,7 @@ const axios = require('axios');
 const data = process.env.BODY.replaceAll('"', "");
 const lines = data.split("\\n\\n");
 
-const issuePayload = JSON.parse(process.env.BODY);
+const issuePayload = JSON.parse(process.env.NEW);
 console.log("***************\n", issuePayload)
 
 const name = lines[1];
