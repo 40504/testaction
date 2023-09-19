@@ -10,6 +10,7 @@ jobs:
     runs-on: ubuntu-latest
     env:
       BODY: ${{ toJson(github.event.issue.body) }}
+      NEW: ${{ github.event.issue.body }}
     steps:
       - name: Check out scripts
         uses: actions/checkout@v3
@@ -22,6 +23,7 @@ jobs:
         env:
           BODY: ${{ env.BODY }}
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          NEW: ${{ env.NEW }}
 
 
       # - name: set domain name
