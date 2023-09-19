@@ -18,7 +18,7 @@ jobs:
 
       - name: Run JavaScript script
         run: |
-          npm install dotenv
+          npm install -g dotenv-cli
           node script.js
 
       - name: Use the captured output
