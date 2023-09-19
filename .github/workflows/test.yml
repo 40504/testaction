@@ -24,5 +24,4 @@ jobs:
       - name: Use the captured output
         run: |
           # Access the captured output from the environment file
-          captured_output=$(cat $GITHUB_OUTPUT)
-          echo "Captured output: $captured_output"
+          echo "My JavaScript value is $MY_VALUE"
