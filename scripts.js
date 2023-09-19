@@ -4,7 +4,9 @@ const axios = require('axios');
 
 const data = process.env.BODY.replaceAll('"', "");
 const lines = data.split("\\n\\n");
-console.log("data***************\n", data)
+
+const issuePayload = JSON.parse(process.env.BODY);
+console.log("***************\n", issuePayload)
 
 const name = lines[1];
 const domainName = lines[3];
