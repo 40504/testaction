@@ -20,9 +20,8 @@ jobs:
         id: myvalue
         run: |
           myvalue=$(node script.js)
-          echo "::set-output name=MY_VALUE::$myvalue"
+          echo "myValue=${{ steps.myvalue.outputs.MY_VALUE }}" >> $GITHUB_ENV
 
-      - name: Use the captured output
+      - name: Display myValue
         run: |
-          # Access the captured output from the environment file
-          echo "My JavaScript value is $MY_VALUE"
+           echo "My JavaScript value is $myValue"
