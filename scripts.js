@@ -4,6 +4,7 @@ const axios = require('axios');
 
 const data = process.env.BODY.replaceAll('"', "");
 const lines = data.split("\\n\\n");
+console.log("data***************\n", data)
 
 const name = lines[1];
 const domainName = lines[3];
@@ -33,8 +34,8 @@ fs.writeFileSync(filePath, JSON.stringify(json, null, 2), err => {
   
 
 const repository = process.env.GITHUB_REPOSITORY;
-const issuePayload = JSON.parse(process.env.BODY);
-const issueNumber = issuePayload.issue.number;
+// const issuePayload = JSON.parse(process.env.BODY);
+// const issueNumber = issuePayload.issue.number;
 
 console.log("issue number: ", issueNumber)
 
