@@ -1,0 +1,27 @@
+name: My GitHub Actions Workflow
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  my-job:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v3
+
+      - name: Run JavaScript script
+        id: myvalue
+        run: |
+          myvalue=$(node script.js)
+          echo "myValue=${{ steps.myvalue.outputs.MY_VALUE }}" >> $GITHUB_ENV
+
+      - name: Display myValue
+        run: |
+           echo "My JavaScript value is $myValue"

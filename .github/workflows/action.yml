@@ -16,43 +16,52 @@ jobs:
 
       - name: node
         uses: actions/setup-node@v3
-        with:
-          node-version: 16
       - run: |
-          node script.js
+          # Execute your JavaScript file here
+          node scripts.js
         env:
           BODY: ${{ env.BODY }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
-      - name: Commit
-        run: |
-          git config --local user.email "action@github.com"
-          git config --local user.name "github-actions"
-          git pull
-          git add . -A
-          git commit --allow-empty -a -m "issue_id: #${{ github.event.issue.number }}"
 
-      - name: Push
-        uses: ad-m/github-push-action@master
-        with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          branch: ${{ github.ref }}
+      # - name: set domain name
+      #   id: domain-name
+      #   run: |
+      #     myValue=$(cat myValue.txt)
+      #     echo "MY_VALUE=$myValue" >> "$GITHUB_OUTPUT"
+      # - name: get domain name
+      #   env:
+      #     MY_VALUE: ${{ steps.domain-name.outputs.MY_VALUE }}
+      #   run: echo "The domain name is $MY_VALUE"
 
-      # - name: Add comment
-      #   uses: peter-evans/create-or-update-comment@5f728c3dae25f329afbe34ee4d08eef25569d79f
+      # - name: Commit
+      #   run: |
+      #     git config --local user.email "action@github.com"
+      #     git config --local user.name "github-actions"
+      #     git pull
+      #     git add . -A
+      #     git commit --allow-empty -a -m "issue_id: #${{ github.event.issue.number }}"
+
+      # - name: Push
+      #   uses: ad-m/github-push-action@master
+      #   with:
+      #     github_token: ${{ secrets.GITHUB_TOKEN }}
+      #     branch: ${{ github.ref }}
+
+      # - name: Add Label
+      #   uses: actions/github-script@v6
+      #   with:
+      #     script: |
+      #       github.rest.issues.addLabels({
+      #         issue_number: context.issue.number,
+      #         owner: context.repo.owner,
+      #         repo: context.repo.repo,
+      #         labels: ['automated']
+      #       })
+      # - name: Add Comment
+      #   uses: peter-evans/create-or-update-comment@v3
+      #   env:
+      #     MY_VALUE: ${{ steps.domain-name.outputs.MY_VALUE }}
       #   with:
       #     issue-number: ${{ github.event.issue.number }}
-      #     body: |
-      #       #${{ github.event.issue.number }}
-
-      - name: Add comment
-        uses: actions/github-script@v6
-        with:
-          script: |
-            const script = require('./script.js').json
-            const fileName = services.Dropbox.domain;
-            
-      - name: Add Comment
-        uses: peter-evans/create-or-update-comment@v3
-        with:
-          issue-number: ${{ github.event.issue.number }}
-          comment: look for json file in `/files/` directory
+      #     body: Path to the json file in -> https://github.com/TFAuthentication/twofactorauth/tree/master/entries/zauthenticator/${{ env.MY_VALUE }}.json
