@@ -8,7 +8,7 @@ const name = lines[1];
 const domainName = lines[3];
 const documentationUrl = lines[5] !== "_No response_" ? lines[5] : null;
 const recoveryUrl = lines[7] !== "_No response_" ? lines[7] : null;
-const supported_2FA_methods = lines[9].split("\n");
+const supported_2FA_methods = lines[9].split("\\n");
 const tfa_lines = supported_2FA_methods
     .filter(line => line.startsWith('- [X]'))
     .map(line => line.substring(6));
