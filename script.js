@@ -2,7 +2,7 @@ const fs = require('fs');
 const path = require('path');
 
 const data = process.env.BODY.replaceAll('"', "");
-const lines = data.split("\n\n");
+const lines = data.split("\\n\\n");
 
 const name = lines[1];
 const domainName = lines[3];
