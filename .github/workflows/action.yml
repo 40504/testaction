@@ -10,7 +10,7 @@ jobs:
     runs-on: ubuntu-latest
     env:
       BODY: ${{ toJson(github.event.issue.body) }}
-      NEW_BRANCH_NAME: 'buffer'
+      BRANCH_NAME: 'buffer'
     steps:
       - name: Check out scripts
         uses: actions/checkout@v3
