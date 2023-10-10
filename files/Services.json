@@ -1,0 +1,8 @@
+{
+  "a": {
+    "domain": "Services",
+    "documentation": "https://docs.sekoia.io/getting_started/account_security/",
+    "recvovery": "https://docs.sekoia.io/getting_started/account_security/",
+    "tfa": []
+  }
+}

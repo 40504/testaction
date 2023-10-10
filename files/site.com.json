@@ -1,0 +1,13 @@
+{
+  "SiteName": {
+    "domain": "site.com",
+    "documentation": "https://docs.sekoia.io/getting_started/account_security/",
+    "recvovery": "https://docs.sekoia.io/getting_started/account_security/",
+    "tfa": [
+      "totp",
+      "u2f",
+      "sms",
+      "email"
+    ]
+  }
+}
