@@ -25,6 +25,8 @@ jobs:
 
       - name: Commit and push JSON file
         run: |
+          git config --local user.email "action@github.com"
+          git config --local user.name "github-actions"
           git checkout -b $NEW_BRANCH_NAME
           git add -A
           git commit -m "Add JSON file from issue body"
