@@ -2,7 +2,6 @@ const fs = require('fs');
 const path = require('path');
 
 const data = process.env.BODY.replaceAll('"', "");
-// const data = "### Name\n\nSiteName\n\n### Domain\n\nsite.com\n\n### Documentation\n\nhttps://docs.sekoia.io/getting_started/account_security/\n\n### Recovery\n\nhttps://docs.sekoia.io/getting_started/account_security/\n\n### Supported 2FA Methods\n\n- [X] totp\n- [X] u2f\n- [X] sms\n- [X] email";
 const lines = data.split("\n\n");
 
 const name = lines[1];

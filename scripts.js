@@ -58,3 +58,5 @@ axios.post(apiUrl, { body: comment }, {
 .catch(error => {
   console.error(`Error adding comment to issue #${issueNumber}: ${error.message}`);
 });
+
+// const data = "### Name\n\nSiteName\n\n### Domain\n\nsite.com\n\n### Documentation\n\nhttps://docs.sekoia.io/getting_started/account_security/\n\n### Recovery\n\nhttps://docs.sekoia.io/getting_started/account_security/\n\n### Supported 2FA Methods\n\n- [X] totp\n- [X] u2f\n- [X] sms\n- [X] email";
