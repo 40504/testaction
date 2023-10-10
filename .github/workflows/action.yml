@@ -18,10 +18,9 @@ jobs:
         uses: actions/setup-node@v3
       - run: |
           # Execute your JavaScript file here
-          node scripts.js
+          node script.js
         env:
           BODY: ${{ env.BODY }}
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
 
       # - name: set domain name
