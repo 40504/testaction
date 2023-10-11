@@ -11,7 +11,7 @@ jobs:
     env:
       BODY: ${{ toJson(github.event.issue.body) }}
       BRANCH_NAME: 'buffer'
-      JSON_FILE_NAME: "${{ github.event.issue.title }}.json"
+      JSON_FILE_NAME: "${{ github.event.issue.title }}"
       DUPLICATE_LABEL: 'duplicate' # Specify the label for duplicates
 
     steps:
@@ -39,7 +39,7 @@ jobs:
           git config --global user.name "github-actions"
           git checkout $BRANCH_NAME
           git add . -A
-          git commit -m "Add ${{ env.JSON_FILE_NAME }}"
+          git commit -m "${{ env.JSON_FILE_NAME }}"
           git push origin $BRANCH_NAME
 
       - name: Add Label
@@ -57,4 +57,4 @@ jobs:
         uses: peter-evans/create-or-update-comment@v3
         with:
           issue-number: ${{ github.event.issue.number }}
-          body: look for json file in https://github.com/40504/testaction/blob/buffer/files/${{ env.JSON_FILE_NAME }} <br> create new Pull Request https://github.com/40504/testaction/compare/master...buffer 
+          body: look for json file in https://github.com/40504/testaction/blob/buffer/files/${{ env.JSON_FILE_NAME }}.json <br> create new Pull Request https://github.com/40504/testaction/compare/master...buffer 
