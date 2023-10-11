@@ -26,19 +26,6 @@ jobs:
       - name: Fetch 'buffer' branch
         run: |
           git fetch origin $BRANCH_NAME
-
-      - name: Check for duplicate JSON file
-        run: |
-          echo "$JSON_FILE_NAME"
-          if git ls-remote --exit-code origin refs/heads/$BRANCH_NAME:/files/$JSON_FILE_NAME; then
-            echo "The JSON file already exists."
-            echo "Adding the '$DUPLICATE_LABEL' label to the issue."
-            gh issue add-label ${{ github.event.issue.number }} "$DUPLICATE_LABEL"
-            exit 0
-          else
-            echo "The JSON file does not exist. Proceeding to create it."
-            exit 1
-          fi
       
       - name: Create JSON file
         run: |
