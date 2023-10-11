@@ -29,6 +29,7 @@ jobs:
 
       - name: Check for duplicate JSON file
         run: |
+          echo "$JSON_FILE_NAME"
           if git ls-remote --exit-code origin refs/heads/$BRANCH_NAME:$JSON_FILE_NAME; then
             echo "The JSON file already exists."
             echo "Adding the '$DUPLICATE_LABEL' label to the issue."
