@@ -41,3 +41,20 @@ jobs:
           git add . -A
           git commit -m "Add JSON file from issue body"
           git push origin $BRANCH_NAME
+
+      - name: Add Label
+        uses: actions/github-script@v6
+        with:
+          script: |
+            github.rest.issues.addLabels({
+              issue_number: context.issue.number,
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              labels: ['automated']
+            })
+
+      - name: Add Comment
+        uses: peter-evans/create-or-update-comment@v3
+        with:
+          issue-number: ${{ github.event.issue.number }}
+          body: look for json file in https://github.com/TFAuthentication/twofactorauth/tree/master/entries/zauthenticator/
