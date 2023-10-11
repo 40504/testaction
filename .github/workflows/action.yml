@@ -12,12 +12,25 @@ jobs:
       BODY: ${{ toJson(github.event.issue.body) }}
       BRANCH_NAME: 'buffer'
     steps:
-      - name: Check out scripts
-        uses: actions/checkout@v3
+      - name: Set up Git
+        run: |
+          git config --global user.email "actions@github.com"
+          git config --global user.name "GitHub Actions"
 
-      - name: node
-        uses: actions/setup-node@v3
-      - run: |
+      - name: Fetch 'buffer' branch
+        run: |
+          git fetch origin $BRANCH_NAME:$BRANCH_NAME
+
+      - name: Check out 'buffer' branch or create it if not exists
+        run: |
+          if git show-ref --quiet "refs/heads/${BRANCH_NAME}"; then
+            git checkout $BRANCH_NAME
+          else
+            git checkout -b $BRANCH_NAME
+          fi
+
+      - name: Create JSON file
+        run: |
           # Execute your JavaScript file here
           node script.js
         env:
@@ -25,9 +38,6 @@ jobs:
 
       - name: Commit and push JSON file
         run: |
-          git config --local user.email "action@github.com"
-          git config --local user.name "github-actions"
-          git checkout $BRANCH_NAME
-          git add . -A
-          git commit -a -m "Add JSON file from issue body"
+          git add -A
+          git commit -m "Add JSON file from issue body"
           git push origin $BRANCH_NAME
