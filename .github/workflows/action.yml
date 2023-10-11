@@ -19,7 +19,13 @@ jobs:
         uses: actions/setup-node@v3
         with:
           node-version: 16
-      - run: |
+
+      - name: Fetch 'buffer' branch
+        run: |
+          git fetch origin $BRANCH_NAME
+      
+      - name: Create JSON file
+        run: |
           node script.js
         env:
           BODY: ${{ env.BODY }}
