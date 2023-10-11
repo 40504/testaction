@@ -11,6 +11,9 @@ jobs:
     env:
       BODY: ${{ toJson(github.event.issue.body) }}
       BRANCH_NAME: 'buffer'
+      JSON_FILE_NAME: "${{ github.event.issue.title }}.json"
+      DUPLICATE_LABEL: 'duplicate' # Specify the label for duplicates
+
     steps:
       - name: Check Out Scripts
         uses: actions/checkout@v3
@@ -23,6 +26,18 @@ jobs:
       - name: Fetch 'buffer' branch
         run: |
           git fetch origin $BRANCH_NAME
+
+      - name: Check for duplicate JSON file
+        run: |
+          if git ls-remote --exit-code origin refs/heads/$BRANCH_NAME:$JSON_FILE_NAME; then
+            echo "The JSON file already exists."
+            echo "Adding the '$DUPLICATE_LABEL' label to the issue."
+            gh issue add-label ${{ github.event.issue.number }} "$DUPLICATE_LABEL"
+            exit 0
+          else
+            echo "The JSON file does not exist. Proceeding to create it."
+            exit 1
+          fi
       
       - name: Create JSON file
         run: |
