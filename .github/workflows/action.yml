@@ -15,15 +15,16 @@ jobs:
       - name: Set up Git
         run: |
           git config --global user.email "actions@github.com"
-          git config --global user.name "GitHub Actions"
+          git config --global user.name "GitHub Actions"    
 
-      # - name: Fetch 'buffer' branch
-      #   run: |
-      #     git fetch origin $BRANCH_NAME          
+      - name: Check Out Scripts
+        uses: actions/checkout@v3
 
-      - name: Create JSON file
-        run: |
-          # Execute your JavaScript file here
+      - name: Node
+        uses: actions/setup-node@v3
+        with:
+          node-version: 16
+      - run: |
           node script.js
         env:
           BODY: ${{ env.BODY }}
