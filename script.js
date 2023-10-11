@@ -22,13 +22,23 @@ const json = {
   }
 };
 
-console.log("***************", json)
+console.log("Created JSON object:", json)
 
+// Specify the file path
 const filePath = path.join(__dirname, 'files', domainName + '.json');
-fs.writeFileSync(filePath, JSON.stringify(json, null, 2), err => {
-    if (err) throw err;
-    console.log('Saved the filtered lines to', filePath);
-  });
+
+// Write the JSON file with proper error handling
+try {
+  fs.writeFileSync(filePath, JSON.stringify(json, null, 2));
+  console.log('Saved the filtered lines to', filePath);
+} catch (error) {
+  console.error('Error saving the JSON file:', error.message);
+}
+
+// fs.writeFileSync(filePath, JSON.stringify(json, null, 2), err => {
+//     if (err) throw err;
+//     console.log('Saved the filtered lines to', filePath);
+//   });
 
 module.exports = ({github, context}) => {
   return context.payload.client_payload.data
