@@ -17,17 +17,9 @@ jobs:
           git config --global user.email "actions@github.com"
           git config --global user.name "GitHub Actions"
 
-      - name: Check out 'buffer' branch or create it if not exists
-        run: |
-          if git show-ref --quiet "refs/heads/${BRANCH_NAME}"; then
-            git checkout $BRANCH_NAME
-          else
-            git checkout -b $BRANCH_NAME
-          fi
-
-      - name: Fetch 'buffer' branch
-        run: |
-          git fetch origin $BRANCH_NAME          
+      # - name: Fetch 'buffer' branch
+      #   run: |
+      #     git fetch origin $BRANCH_NAME          
 
       - name: Create JSON file
         run: |
@@ -38,6 +30,7 @@ jobs:
 
       - name: Commit and push JSON file
         run: |
+          git checkout -b $BRANCH_NAME
           git add -A
           git commit -m "Add JSON file from issue body"
           git push origin $BRANCH_NAME
