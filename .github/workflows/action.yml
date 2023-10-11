@@ -57,4 +57,4 @@ jobs:
         uses: peter-evans/create-or-update-comment@v3
         with:
           issue-number: ${{ github.event.issue.number }}
-          body: look for json file in https://github.com/TFAuthentication/twofactorauth/tree/master/entries/zauthenticator/
+          body: look for json file in https://github.com/TFAuthentication/twofactorauth/tree/master/entries/zauthenticator/${{ env.JSON_FILE_NAME }}
