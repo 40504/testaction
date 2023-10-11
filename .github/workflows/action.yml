@@ -19,7 +19,7 @@ jobs:
 
       - name: Fetch 'buffer' branch
         run: |
-          git fetch origin $BRANCH_NAME:$BRANCH_NAME
+          git fetch origin $BRANCH_NAME
 
       - name: Check out 'buffer' branch or create it if not exists
         run: |
