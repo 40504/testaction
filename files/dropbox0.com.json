@@ -1,0 +1,11 @@
+{
+  "Dropbox": {
+    "domain": "dropbox0.com",
+    "documentation": "https://help.dropbox.com/account-access/enable-two-step-verification",
+    "recvovery": "https://help.dropbox.com/security/",
+    "tfa": [
+      "totp",
+      "sms"
+    ]
+  }
+}
