@@ -31,7 +31,8 @@ jobs:
 
       - name: Commit and push JSON file
         run: |
-          git commit -m "master branch"
+          git pull
+          git commit -a -m  "master branch"
           git checkout $BRANCH_NAME
           git add -A
           git commit -m "Add JSON file from issue body"
