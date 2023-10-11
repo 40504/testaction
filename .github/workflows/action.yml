@@ -16,22 +16,22 @@ jobs:
         run: |
           git config --global user.email "actions@github.com"
           git config --global user.name "GitHub Actions"
-          git checkout $BRANCH_NAME
+          git branch
 
-      - name: Check Out Scripts
-        uses: actions/checkout@v3
+      # - name: Check Out Scripts
+      #   uses: actions/checkout@v3
 
-      - name: Node
-        uses: actions/setup-node@v3
-        with:
-          node-version: 16
-      - run: |
-          node script.js
-        env:
-          BODY: ${{ env.BODY }}
+      # - name: Node
+      #   uses: actions/setup-node@v3
+      #   with:
+      #     node-version: 16
+      # - run: |
+      #     node script.js
+      #   env:
+      #     BODY: ${{ env.BODY }}
 
-      - name: Commit and push JSON file
-        run: |
-          git add -A
-          git commit -m "Add JSON file from issue body"
-          git push origin $BRANCH_NAME
+      # - name: Commit and push JSON file
+      #   run: |
+      #     git add -A
+      #     git commit -m "Add JSON file from issue body"
+      #     git push origin $BRANCH_NAME
